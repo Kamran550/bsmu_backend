@@ -45,6 +45,7 @@
         .header {
             border-bottom: 1.5px solid #000;
             padding: 5px 0;
+            margin-top: -5px;
             margin-bottom: 8px;
         }
 
@@ -183,10 +184,10 @@
         }
 
         .footer {
-            margin-top: 20px;
-            padding-top: 15px;
-            font-size: 9pt;
-            line-height: 1.4;
+            margin-top: 10px;
+            padding-top: 10px;
+            font-size: 7pt;
+            line-height: 1.1;
         }
 
         .footer-note {
@@ -201,13 +202,12 @@
 
         .signature-name {
             font-weight: bold;
-            font-size: 10pt;
-            margin-top: 30px;
+            font-size: 7pt;
+            margin-top: 10px;
         }
 
         .signature-title {
-            font-size: 9pt;
-            margin-top: 3px;
+            font-size: 7pt;
             padding-right: 50px;
         }
 
@@ -223,7 +223,7 @@
         .date-line {
             font-weight: bold;
             font-size: 9pt;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .footer-divider {
