@@ -14,7 +14,7 @@
         body {
             /* font-family: 'Times New Roman', 'Times', 'Georgia', serif; */
             font-family: 'DejaVu Serif', 'Times New Roman', serif;
-            font-size: 7.5pt;
+            font-size: 7.2pt;
             line-height: 1.3;
             color: #000;
             margin: 0;
@@ -124,7 +124,7 @@
         }
 
         .content {
-            margin: 6px 0;
+            /* margin: 6px 0; */
             text-align: justify;
             line-height: 1.3;
         }
@@ -237,7 +237,7 @@
         }
 
         .closing-section {
-            margin-top: 15px;
+            margin-top: 10px;
             margin-bottom: 0px;
         }
 
@@ -302,7 +302,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 0;
         }
 
@@ -541,6 +541,7 @@
             completing the transfer.
         </p>
     </div>
+    <br>
     <!-- Payment Table -->
     <table class="payment-table">
         <thead>
@@ -572,9 +573,6 @@
             </tr>
         </tbody>
     </table>
-
-    <br>
-    <br>
 
     <!-- English Language Proficiency Requirements -->
     <div class="section-header">English Language Proficiency Requirements</div>
@@ -636,7 +634,6 @@
         </p>
     </div>
 
-    <br>
 
     <!-- Scholarship Information -->
     <div class="subsection-title">Scholarship Information</div>
@@ -648,8 +645,8 @@
         </p>
     </div>
 
-    <br>
 
+    
     <!-- Required Documents for Final Registration -->
     <div class="section-header">Required Documents for Final Registration</div>
 
@@ -667,8 +664,6 @@
         <li>Final Acceptance Letter</li>
     </ol>
 
-    <br>
-
     <!-- Additional Information -->
     <div class="content">
         <p>
@@ -681,8 +676,6 @@
         </p>
     </div>
 
-    <br>
-    <br>
 
     <!-- Closing -->
     <div class="closing-section">
