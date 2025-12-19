@@ -166,7 +166,7 @@
                     <!-- Profile Icon -->
                     <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center shrink-0">
                         <span class="text-white font-semibold text-sm">
-                            {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}{{ strtoupper(substr(Auth::user()->surname ?? '', 0, 1)) }}
+                            {{ tr_upper(substr(Auth::user()->name, 0, 1)) }}{{ strtoupper(substr(Auth::user()->surname ?? '', 0, 1)) }}
                         </span>
                     </div>
                     <!-- User Info -->

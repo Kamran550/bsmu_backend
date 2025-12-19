@@ -402,7 +402,7 @@
                     @endif
                     <div class="university-info">
                         <div class="university-name">Balkan Science and Management University</div>
-                        <div class="university-subtitle">Business European Education Alliance</div>
+                        <div class="university-subtitle">Business Balkan Education Alliance</div>
                     </div>
                 </div>
             </div>
@@ -455,7 +455,7 @@
 
                 <!-- Location & Date -->
                 <div class="location-date">
-                    <div class="location">Rector: Prof. Dr. Serdar Koral</div>
+                    <div class="location">Rector: Prof. Dr. Eraytun Koralmaz</div>
                     <div class="date">{{ $graduationDate ?? now()->format('F d, Y') }}</div>
                 </div>
             </div>

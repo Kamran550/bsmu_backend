@@ -128,7 +128,7 @@ class ExportPriceList extends Component
         }
 
         return [
-            'university_name' => 'EUROPEAN INTERNATIONAL PEACE UNIVERSITY',
+            'university_name' => 'Balkan Science and Management University',
             'scan_me' => 'SCAN ME',
             'programs' => 'PROGRAMS',
             'academic_year' => 'ACADEMIC YEAR 2025/2026',

@@ -422,7 +422,7 @@
             @endif
             <div class="university-name-container">
                 <div class="university-name">
-                    BALTAN SCIENCE AND MANAGEMENT UNIVERSITY
+                    BALKAN SCIENCE AND MANAGEMENT UNIVERSITY
                 </div>
                 <div class="directorate-name">
                     Directorate of International Relations
@@ -443,7 +443,7 @@
                 Application Code: {{ $student->application_number ?? 'N/A' }}
             </div>
             <div class="subject-info-row">
-                Dear {{ strtoupper($student->first_name . ' ' . $student->last_name) }}
+                Dear {{ tr_upper($student->first_name . ' ' . $student->last_name) }}
             </div>
 
         </div>
@@ -459,7 +459,7 @@
     <!-- Introduction Content -->
     <div class="content">
         <p>
-            We are pleased to inform you that the Admission Committee of European International Peace University has
+            We are pleased to inform you that the Admission Committee of Balkan Science and Management University has
             carefully reviewed your application for admission to
             <strong>{{ $student->application->program?->name ?? 'Program' }}</strong>
             ({{ $student->application->program?->degree?->name ?? 'Degree' }}) for the 2025-2026 – Fall. It is our
@@ -478,7 +478,7 @@
         </div>
         <div class="info-row">
             <div class="info-label">Full Name</div>
-            <div class="info-value">{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</div>
+            <div class="info-value">{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</div>
         </div>
         <div class="info-row">
             <div class="info-label">Date of Birth</div>
@@ -788,7 +788,7 @@
                     <div
                         style="background: #f0f0f0; padding: 12px 15px; border-radius: 8px; font-size: 11px; line-height: 1.4;">
                         This document was e-signed for
-                        <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong>
+                        <strong>{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</strong>
                         on {{ now()->format('d/m/Y') }} with document number
                         <strong>{{ $verificationCode ?? strtoupper(\Illuminate\Support\Str::random(12)) }}</strong>
                         The validity of the document can be confirmed by scanning the QR code or by document number at

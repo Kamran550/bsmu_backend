@@ -52,7 +52,7 @@ class DiplomaMail extends Mailable
             : $this->student->name . ' ' . $this->student->surname;
             
         return new Envelope(
-            subject: 'Diploma Certificate - ' . $studentName . ' - European International Peace University',
+            subject: 'Diploma Certificate - ' . $studentName . ' - Balkan Science and Management University',
         );
     }
 

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\App;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        require_once app_path('Helpers/TextHelper.php');
         $this->app->bind(
             \App\Repositories\Interfaces\FacultyRepositoryInterface::class,
             \App\Repositories\FacultyRepository::class

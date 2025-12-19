@@ -295,42 +295,42 @@
                 </div>
                 <div class="info-row">
                     <div class="info-label">Adı</div>
-                    <div class="info-value">{{ strtoupper($student->first_name) }}</div>
+                    <div class="info-value">{{ tr_upper($student->first_name) }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Soyadı</div>
-                    <div class="info-value">{{ strtoupper($student->last_name) }}</div>
+                    <div class="info-value">{{ tr_upper($student->last_name) }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Doğum Yeri & Tarihi</div>
                     <div class="info-value">
-                        {{ strtoupper($student->place_of_birth ?? ($student->nationality ?? 'N/A')) }} -
+                        {{ tr_upper($student->place_of_birth ?? ($student->nationality ?? 'N/A')) }} -
                         {{ $student->date_of_birth ? $student->date_of_birth->format('d/m/Y') : 'N/A' }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Ata Adı</div>
-                    <div class="info-value">{{ strtoupper($student->father_name ?? 'N/A') }}</div>
+                    <div class="info-value">{{ tr_upper($student->father_name ?? 'N/A') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Uyruk</div>
-                    <div class="info-value">{{ strtoupper($student->nationality ?? 'N/A') }}</div>
+                    <div class="info-value">{{ tr_upper($student->nationality ?? 'N/A') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Eğitim Düzeyi</div>
                     <div class="info-value">
-                        {{ strtoupper($student->application->program?->degree?->getName('TR') ?: $student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A')) }}
+                        {{ tr_upper($student->application->program?->degree?->getName('TR') ?: $student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A')) }}
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Enstitü / Fakülte</div>
                     <div class="info-value">
-                        {{ strtoupper($student->application->program?->faculty?->getName('TR') ?: $student->application->program?->faculty?->name ?? 'GRADUATE SCHOOL') }}
+                        {{ tr_upper($student->application->program?->faculty?->getName('TR') ?: $student->application->program?->faculty?->name ?? 'GRADUATE SCHOOL') }}
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Bölüm</div>
                     <div class="info-value">
-                        {{ strtoupper($student->application->program?->getName('TR') ?: $student->application->program?->name ?? 'N/A') }}
+                        {{ tr_upper($student->application->program?->getName('TR') ?: $student->application->program?->name ?? 'N/A') }}
                     </div>
                 </div>
                 <div class="info-row">
@@ -422,7 +422,7 @@
     <!-- Signature Section -->
     <div class="signature-section">
         <div class="signature-name">
-            Prof. Dr. Serdar KORAL
+            Prof. Dr. Eraytun Koralmaz
         </div>
         <div class="signature-title">
             Rektör
@@ -447,7 +447,7 @@
                     style="background: #f0f0f0; padding: 12px 15px; border-radius: 8px; font-size: 11px; line-height: 1.2;">
                     Bu belge,
                     {{ now()->format('d/m/Y') }} tarihinde
-                    <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> adına
+                    <strong>{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</strong> adına
                     <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>
                     belge numarasıyla elektronik olarak imzalanmıştır. Belgenin geçerliliği, QR kodunu tarayarak veya belge numarasını kullanarak
                     <strong>{{ $student->getVerificationUrl() }}</strong> adresinden doğrulanabilir.

@@ -298,40 +298,40 @@
                 </div>
                 <div class="info-row">
                     <div class="info-label">Name</div>
-                    <div class="info-value">{{ strtoupper($student->first_name) }}</div>
+                    <div class="info-value">{{ tr_upper($student->first_name) }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Surname</div>
-                    <div class="info-value">{{ strtoupper($student->last_name) }}</div>
+                    <div class="info-value">{{ tr_upper($student->last_name) }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Place of Birth & Date</div>
                     <div class="info-value">
-                        {{ strtoupper($student->place_of_birth ?? ($student->nationality ?? 'N/A')) }} -
+                        {{ tr_upper($student->place_of_birth ?? ($student->nationality ?? 'N/A')) }} -
                         {{ $student->date_of_birth ? $student->date_of_birth->format('d/m/Y') : 'N/A' }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Father's Name</div>
-                    <div class="info-value">{{ strtoupper($student->father_name ?? 'N/A') }}</div>
+                    <div class="info-value">{{ tr_upper($student->father_name ?? 'N/A') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Nationality</div>
-                    <div class="info-value">{{ strtoupper($student->nationality ?? 'N/A') }}</div>
+                    <div class="info-value">{{ tr_upper($student->nationality ?? 'N/A') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Education Level</div>
                     <div class="info-value">
-                        {{ strtoupper($student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A')) }}
+                        {{ tr_upper($student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A')) }}
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Institue / Faculty</div>
                     <div class="info-value">
-                        {{ strtoupper($student->application->program?->faculty?->name ?? 'GRADUATE SCHOOL') }}</div>
+                        {{ tr_upper($student->application->program?->faculty?->name ?? 'GRADUATE SCHOOL') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Department</div>
-                    <div class="info-value">{{ strtoupper($student->application->program?->name ?? 'N/A') }}</div>
+                    <div class="info-value">{{ tr_upper($student->application->program?->name ?? 'N/A') }}</div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Education Language</div>
@@ -447,7 +447,7 @@
                     <div
                         style="background: #f0f0f0; padding: 12px 15px; border-radius: 8px; font-size: 11px; line-height: 1.4;">
                         This document was e-signed for
-                        <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> on
+                        <strong>{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</strong> on
                         {{ now()->format('d/m/Y') }} with document number
                         <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>
                         The validity of the document can be confirmed by scanning the QR code or by document number at

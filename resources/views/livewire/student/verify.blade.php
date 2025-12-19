@@ -83,7 +83,7 @@
 
         <!-- Footer -->
         <div class="mt-8 text-center text-sm text-gray-500">
-            <p>European International Peace University</p>
+            <p>Balkan Science and Management University</p>
             <p class="mt-1">Document Verification System</p>
         </div>
     </div>
