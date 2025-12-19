@@ -81,7 +81,7 @@
         }
 
         .university-name {
-            font-size: 14pt;
+            font-size: 12pt;
             font-weight: bold;
             color: #000;
             text-align: center;
@@ -90,7 +90,7 @@
         }
 
         .directorate-name {
-            font-size: 9pt;
+            font-size: 7pt;
             font-weight: normal;
             color: #000;
             text-align: center;
@@ -103,19 +103,19 @@
             flex-direction: column;
             align-items: flex-end;
             justify-content: center;
-            font-size: 9pt;
+            font-size: 7pt;
             text-align: right;
             min-width: 80mm;
         }
 
         .document-info {
-            font-size: 9pt;
+            font-size: 7pt;
             margin: 8px 0 4px 0;
             text-align: left;
         }
 
         .document-title {
-            font-size: 11pt;
+            font-size: 9pt;
             font-weight: bold;
             text-align: center;
             margin: 10px 0;
@@ -148,7 +148,7 @@
             width: 100%;
             margin: 0;
             border-collapse: collapse;
-            font-size: 9pt;
+            font-size: 7pt;
         }
 
         .info-row {
@@ -279,7 +279,7 @@
         <div class="document-title" style="flex: 1; margin: 0;">
             STUDENT CERTIFICATE
         </div>
-        <div style="font-size: 9pt; font-weight: normal;">
+        <div style="font-size: 7pt; font-weight: normal;">
             {{ now()->format('d/m/Y') }}
         </div>
     </div>
@@ -383,7 +383,7 @@
             @else
                 <div class="photo-container">
                     <div
-                        style="width: 100%; height: 100%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; font-size: 10pt;">
+                        style="width: 100%; height: 100%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #999; font-size: 7pt;">
                         No Photo
                     </div>
                 </div>
