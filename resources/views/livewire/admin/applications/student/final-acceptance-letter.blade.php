@@ -216,7 +216,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 0;
         }
 
