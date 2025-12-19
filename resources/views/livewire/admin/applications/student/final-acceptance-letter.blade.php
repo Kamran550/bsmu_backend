@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Times New Roman', 'Times', 'Georgia', serif;
+            font-family: 'DejaVu Serif', 'Times New Roman', serif;
             font-size: 10pt;
             line-height: 1.4;
             color: #000;
