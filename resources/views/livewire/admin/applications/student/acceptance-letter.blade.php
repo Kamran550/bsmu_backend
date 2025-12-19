@@ -237,7 +237,7 @@
         }
 
         .closing-section {
-            margin-top: 10px;
+            margin-top: 15px;
             margin-bottom: 0px;
         }
 
@@ -302,7 +302,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 0;
         }
 
@@ -635,7 +635,7 @@
     </div>
 
 
-    <!-- Scholarship Information -->
+    {{-- <!-- Scholarship Information -->
     <div class="subsection-title">Scholarship Information</div>
     <div class="content">
         <p>
@@ -643,7 +643,7 @@
             transportation, meals, books,
             other educational needs, and healthcare expenses.
         </p>
-    </div>
+    </div> --}}
 
 
     
