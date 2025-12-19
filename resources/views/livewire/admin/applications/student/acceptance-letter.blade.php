@@ -49,11 +49,11 @@
         }
 
         .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            text-align: center;
             padding: 0;
             position: relative;
+            /* margin-bottom: 3px; */
+            margin-top: 0;
         }
 
         .logo {
