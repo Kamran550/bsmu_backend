@@ -196,7 +196,7 @@
         }
 
         .signature-section {
-            margin-top: 20px;
+            margin-top: 8px;
             text-align: right;
         }
 
@@ -222,8 +222,8 @@
 
         .date-line {
             font-weight: bold;
-            font-size: 9pt;
-            margin-bottom: 8px;
+            font-size: 7pt;
+            margin-bottom: 7px;
         }
 
         .footer-divider {
