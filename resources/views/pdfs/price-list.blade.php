@@ -31,18 +31,15 @@
 
         .header {
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             padding: 12px 10px;
             border: 3px solid #dc2626;
             border-radius: 10px;
-            background-color: #dc2626;
+            background-color: #ffffff;
             position: relative;
             min-height: 100px;
             overflow: hidden;
-            /* EKLE - float'ları düzgün kapatır */
             page-break-inside: avoid;
-            /* EKLE - header'ın bölünmesini önler */
-
         }
 
         .logo-container {
@@ -71,19 +68,20 @@
 
         .qr-text {
             font-size: 6.5pt;
-            color: #fff;
+            color: #dc2626;
             font-weight: bold;
         }
 
         .header-content {
             padding-top: 8px;
             overflow: hidden;
+            margin-bottom: 0;
         }
 
         .university-name {
             font-size: 16pt;
             font-weight: bold;
-            color: #fff;
+            color: #dc2626;
             margin-bottom: 6px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -99,7 +97,7 @@
         .academic-year {
             font-size: 10pt;
             font-weight: bold;
-            color: #fff;
+            color: #dc2626;
         }
 
         .clearfix::after {
@@ -111,7 +109,8 @@
         }
 
         .degree-section {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            margin-top: 0;
             page-break-inside: avoid;
         }
 
@@ -126,14 +125,16 @@
         }
 
         .faculty-section {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            margin-top: 0;
         }
 
         .faculty-name {
             font-size: 10pt;
             font-weight: bold;
             color: #b91c1c;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
+            margin-top: 0;
             padding: 4px 6px;
             background-color: #fecaca;
             border-left: 3px solid #b91c1c;
@@ -143,6 +144,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 6px;
+            margin-top: 0;
             page-break-inside: avoid;
             font-size: 7.5pt;
         }
