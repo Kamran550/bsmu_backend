@@ -33,9 +33,9 @@
             text-align: center;
             margin-bottom: 12px;
             padding: 12px 10px;
-            border: 3px solid #1e3a8a;
+            border: 3px solid #2563eb;
             border-radius: 10px;
-            background-color: #1e3a8a;
+            background-color: #2563eb;
             position: relative;
             min-height: 100px;
         }
@@ -86,7 +86,7 @@
         .programs-title {
             font-size: 13pt;
             font-weight: bold;
-            color: #fbbf24;
+            color: #f59e0b;
             margin-bottom: 4px;
         }
 
@@ -110,11 +110,11 @@
         .degree-title {
             font-size: 12pt;
             font-weight: bold;
-            color: #1e3a8a;
+            color: #2563eb;
             margin-bottom: 6px;
             padding: 6px 8px;
-            background-color: #dbeafe;
-            border-left: 4px solid #1e3a8a;
+            background-color: #bfdbfe;
+            border-left: 4px solid #2563eb;
         }
 
         .faculty-section {
@@ -124,11 +124,11 @@
         .faculty-name {
             font-size: 10pt;
             font-weight: bold;
-            color: #7e22ce;
+            color: #9333ea;
             margin-bottom: 5px;
             padding: 4px 6px;
-            background-color: #f3e8ff;
-            border-left: 3px solid #7e22ce;
+            background-color: #e9d5ff;
+            border-left: 3px solid #9333ea;
         }
 
         table {
@@ -140,13 +140,13 @@
         }
 
         th {
-            background-color: #7e22ce;
+            background-color: #9333ea;
             color: white;
             padding: 6px 5px;
             text-align: left;
             font-weight: bold;
             font-size: 7.5pt;
-            border: 1px solid #5b21b6;
+            border: 1px solid #7c3aed;
             line-height: 1.2;
         }
 
@@ -156,23 +156,23 @@
 
         td {
             padding: 4px 5px;
-            border: 1px solid #d1d5db;
+            border: 1px solid #cbd5e1;
             font-size: 7.5pt;
             line-height: 1.2;
         }
 
         tr:nth-child(even) {
-            background-color: #f9fafb;
+            background-color: #f1f5f9;
         }
 
         tr:hover {
-            background-color: #f3f4f6;
+            background-color: #e2e8f0;
         }
 
         .price {
             text-align: center;
             font-weight: bold;
-            color: #1e3a8a;
+            color: #2563eb;
         }
 
         .footer {
@@ -183,15 +183,15 @@
             text-align: center;
             margin: 0;
             padding: 8px;
-            background-color: #1e3a8a;
-            border-top: 2px solid #1e3a8a;
+            background-color: #2563eb;
+            border-top: 2px solid #2563eb;
             font-size: 8pt;
             color: #ffffff;
             font-weight: bold;
         }
 
         .footer a {
-            color: #fbbf24;
+            color: #f59e0b;
             text-decoration: none;
         }
 
@@ -256,7 +256,6 @@
                                 <th class="center" style="width: 15%;">
                                     {{ $translations['spring_semester'] }}<br>{{ $translations['scholarship_10'] }}
                                 </th>
-                                <th class="center" style="width: 15%;">{{ $translations['scholarship_50'] }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -266,8 +265,6 @@
                                     <td class="price">€ {{ number_format($program['price_per_year'], 0, ',', '.') }}
                                     </td>
                                     <td class="price">€ {{ number_format($program['fall_semester'], 0, ',', '.') }}
-                                    </td>
-                                    <td class="price">€ {{ number_format($program['spring_semester'], 0, ',', '.') }}
                                     </td>
                                     <td class="price">€ {{ number_format($program['spring_semester'], 0, ',', '.') }}
                                     </td>

@@ -422,7 +422,7 @@
     <!-- Signature Section -->
     <div class="signature-section">
         <div class="signature-name">
-            Prof. Dr. Eraytun Koralmaz
+            Prof. Dr. Eraytun KORALMAZ
         </div>
         <div class="signature-title">
             Rektör

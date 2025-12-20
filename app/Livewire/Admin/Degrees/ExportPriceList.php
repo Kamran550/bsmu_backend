@@ -113,7 +113,7 @@ class ExportPriceList extends Component
     {
         if ($language === 'TR') {
             return [
-                'university_name' => 'AVRUPA ULUSLARARASI BARIŞ ÜNİVERSİTESİ',
+                'university_name' => 'Balkan Bilim ve Yönetim Üniversitesi',
                 'scan_me' => 'BENI TARA',
                 'programs' => 'PROGRAMLAR',
                 'academic_year' => 'AKADEMİK YIL 2025/2026',
@@ -121,7 +121,7 @@ class ExportPriceList extends Component
                 'standard_annual_fee' => 'Standart Yıllık Ücret',
                 'fall_semester' => 'Güz Dönemi',
                 'spring_semester' => 'Bahar Dönemi',
-                'scholarship_10' => '%10 Burs',
+                'scholarship_10' => '%50 Burs',
                 'scholarship_50' => '%50 Burs',
                 'for_more_info' => 'DAHA FAZLA BİLGİ İÇİN LÜTFEN BURAYA TIKLAYIN'
             ];

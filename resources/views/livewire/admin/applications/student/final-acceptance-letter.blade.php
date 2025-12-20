@@ -423,7 +423,7 @@
     <!-- Signature Section -->
     <div class="signature-section">
         <div class="signature-name">
-            Prof. Dr. SERDAR KORAL
+            Prof. Dr. Eraytun KORALMAZ
         </div>
         <div class="signature-title">
             Rector

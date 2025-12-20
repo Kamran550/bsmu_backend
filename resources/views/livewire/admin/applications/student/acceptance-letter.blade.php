@@ -553,19 +553,19 @@
         <tbody>
             <tr>
                 <td><strong>BANK NAME</strong></td>
-                <td>BANK MILLENNIUM S.A.</td>
+                <td>UNICREDIT BANK SRBIJA A.D.</td>
             </tr>
             <tr>
                 <td><strong>CITY / COUNTRY</strong></td>
-                <td>BELGRADE - SERBIA</td>
+                <td>BEOGRAD - SERBIA</td>
             </tr>
             <tr>
                 <td><strong>ACCOUNT NAME</strong></td>
-                <td>BALKAN.SCIENCE.AND.MANAGEMENT.UNIVERSITY</td>
+                <td>BALKAN SCIENCE MANAGEMENT UNIVERSITY</td>
             </tr>
             <tr>
                 <td><strong>SWIFT CODE</strong></td>
-                <td>BIGBPLPW</td>
+                <td>BACXRSBG</td>
             </tr>
             <tr>
                 <td><strong>DEPOSIT AMOUNT</strong></td>
