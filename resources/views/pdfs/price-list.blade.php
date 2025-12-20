@@ -26,7 +26,7 @@
             padding-bottom: 60px;
             background: white;
             position: relative;
-            min-height: 100vh;
+            /* min-height: 100vh; */
         }
 
         .header {
@@ -226,7 +226,7 @@
 
 <body>
     <!-- Header -->
-    <div class="header clearfix">
+    <div class="header">
         <div class="logo-container">
             <img src="{{ public_path('images/BSMU-simvol.png') }}" alt="BSMU Logo" class="logo">
         </div>
