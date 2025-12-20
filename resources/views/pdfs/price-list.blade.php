@@ -33,11 +33,16 @@
             text-align: center;
             margin-bottom: 12px;
             padding: 12px 10px;
-            border: 3px solid #2563eb;
+            border: 3px solid #dc2626;
             border-radius: 10px;
-            background-color: #2563eb;
+            background-color: #dc2626;
             position: relative;
             min-height: 100px;
+            overflow: hidden;
+            /* EKLE - float'ları düzgün kapatır */
+            page-break-inside: avoid;
+            /* EKLE - header'ın bölünmesini önler */
+
         }
 
         .logo-container {
@@ -72,6 +77,7 @@
 
         .header-content {
             padding-top: 8px;
+            overflow: hidden;
         }
 
         .university-name {
@@ -86,7 +92,7 @@
         .programs-title {
             font-size: 13pt;
             font-weight: bold;
-            color: #f59e0b;
+            color: #1e40af;
             margin-bottom: 4px;
         }
 
@@ -100,6 +106,8 @@
             content: "";
             display: table;
             clear: both;
+            height: 0;
+            visibility: hidden;
         }
 
         .degree-section {
@@ -110,11 +118,11 @@
         .degree-title {
             font-size: 12pt;
             font-weight: bold;
-            color: #2563eb;
+            color: #dc2626;
             margin-bottom: 6px;
             padding: 6px 8px;
-            background-color: #bfdbfe;
-            border-left: 4px solid #2563eb;
+            background-color: #fee2e2;
+            border-left: 4px solid #dc2626;
         }
 
         .faculty-section {
@@ -124,11 +132,11 @@
         .faculty-name {
             font-size: 10pt;
             font-weight: bold;
-            color: #9333ea;
+            color: #b91c1c;
             margin-bottom: 5px;
             padding: 4px 6px;
-            background-color: #e9d5ff;
-            border-left: 3px solid #9333ea;
+            background-color: #fecaca;
+            border-left: 3px solid #b91c1c;
         }
 
         table {
@@ -140,13 +148,13 @@
         }
 
         th {
-            background-color: #9333ea;
+            background-color: #dc2626;
             color: white;
             padding: 6px 5px;
             text-align: left;
             font-weight: bold;
             font-size: 7.5pt;
-            border: 1px solid #7c3aed;
+            border: 1px solid #b91c1c;
             line-height: 1.2;
         }
 
@@ -172,7 +180,7 @@
         .price {
             text-align: center;
             font-weight: bold;
-            color: #2563eb;
+            color: #dc2626;
         }
 
         .footer {
@@ -183,15 +191,15 @@
             text-align: center;
             margin: 0;
             padding: 8px;
-            background-color: #2563eb;
-            border-top: 2px solid #2563eb;
+            background-color: #dc2626;
+            border-top: 2px solid #dc2626;
             font-size: 8pt;
             color: #ffffff;
             font-weight: bold;
         }
 
         .footer a {
-            color: #f59e0b;
+            color: #1e40af;
             text-decoration: none;
         }
 
