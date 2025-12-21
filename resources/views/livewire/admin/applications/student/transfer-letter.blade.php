@@ -171,7 +171,6 @@
         @endif
 
         <div class="contact-info">
-            <strong>Adres:</strong> Belgrade, Serbia | www.bsmu.edu.rs<br>
             <strong>E-posta:</strong> international@bsmu.edu.rs<br>
             <strong>Telefon:</strong> +381 11 3302 330<br>
             <strong>Tarih:</strong> {{ now()->format('d/m/Y') }}
@@ -190,7 +189,7 @@
 
     <!-- Reference Information -->
     <div class="reference-line">
-        <strong>Referans No:</strong> {{ $student->application_number ?? 'N/A' }}
+        <strong>Öğrenci No:</strong> {{ $student->application_number ?? 'N/A' }}
     </div>
     <div class="reference-line">
         <strong>Pasaport No:</strong> {{ $student->passport_number ?? 'N/A' }}
@@ -212,7 +211,13 @@
         <p>
             Bu mektup, daha önce <strong>{{ $student->current_university ?: 'N/A' }}</strong>'nde kayıtlı olan
             <strong>{{ tr_upper(text: $student->first_name) }} {{ tr_upper(text: $student->last_name) }}</strong>'in,
-            2025–2026 akademik yılı için Balkan Bilim ve Yönetim Üniversitesi bünyesinde
+            @php
+                $applicationDate = $student->application->submitted_at ?? ($student->application->created_at ?? now());
+                $startYear = $applicationDate->format('Y');
+                $endYear = $startYear + 1;
+            @endphp
+            {{ $startYear }}–{{ $endYear }} akademik yılı için Avrupa Uluslararası Barış Üniversitesi
+            bünyesinde
             {{ tr_upper($student->application->program?->degree?->getName('TR') ?? ($student->application->program?->degree?->name ?? 'N/A')) }}
             {{ tr_upper($student->application->program?->getName('TR') ?? ($student->application->program?->name ?? 'N/A')) }}
             programına
@@ -235,6 +240,7 @@
         <div class="signature-line" style="margin-top: 15px;">
             Öğrenci İşleri
         </div>
+        <br>
         <div class="signature-line">
             BALKAN BİLİM VE YÖNETİM ÜNİVERSİTESİ
         </div>
