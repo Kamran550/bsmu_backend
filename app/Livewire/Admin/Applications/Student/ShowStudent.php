@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Mail\TransferLetterMail;
+
 
 #[Layout('layouts.admin')]
 class ShowStudent extends Component
@@ -103,6 +105,51 @@ class ShowStudent extends Component
             session()->flash('error', 'Status yenilənərkən xəta baş verdi: ' . $e->getMessage());
         }
     }
+
+
+    
+    public function sendTransferLetter()
+    {
+        try {
+            Log::info('=== sendTransferLetter metodu çağırıldı ===');
+            Log::info('Student ID: ' . $this->student->id);
+            Log::info('Student Email: ' . ($this->student->email ?? 'YOXDUR'));
+
+            if (!$this->student->email) {
+                Log::warning('Email ünvanı yoxdur!');
+                session()->flash('error', 'Tələbənin email ünvanı yoxdur.');
+                return;
+            }
+
+            // Reload student with application relationship
+            $this->student->load('application');
+
+            // Check mail configuration
+            $mailDriver = config('mail.default');
+
+            Mail::to($this->student->email)->send(new TransferLetterMail($this->student));
+
+            if ($mailDriver === 'log') {
+                session()->flash('success', 'Transfer mektubu log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
+            } else {
+                session()->flash('success', 'Transfer Kabul Mektubu ' . $this->student->email . ' email adresine gönderildi.');
+            }
+        } catch (\Exception $e) {
+            Log::error('Transfer mektubu göndərilərkən xəta: ' . $e->getMessage(), [
+                'student_id' => $this->student->id,
+                'email' => $this->student->email,
+                'trace' => $e->getTraceAsString()
+            ]);
+
+            $errorMessage = 'Transfer mektubu göndərilərkən xəta baş verdi: ' . $e->getMessage();
+            if (str_contains($e->getMessage(), 'Connection') || str_contains($e->getMessage(), 'SMTP')) {
+                $errorMessage .= ' SMTP konfiqurasiyasını yoxlayın.';
+            }
+
+            session()->flash('error', $errorMessage);
+        }
+    }
+
 
     public function sendFinalAcceptanceLetter()
     {
@@ -196,7 +243,6 @@ class ShowStudent extends Component
             // Check mail configuration
             $mailDriver = config('mail.default');
 
-            Log::info('PASsssssword: ', ['password:', $plainPassword]);
 
             Mail::to($this->student->email)->send(new FinalAcceptanceLetterMail($this->student, $user, $plainPassword));
 

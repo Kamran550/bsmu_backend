@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\DocumentVerification;
 use App\Models\StudentApplication;
-use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -14,25 +14,20 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use App\Models\DocumentVerification;
 use App\Enums\DocumentTypeEnum;
 
-class FinalAcceptanceLetterMail extends Mailable
+class TransferLetterMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public StudentApplication $student;
-    public User $user;
-    public ?string $plainPassword;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(StudentApplication $student, User $user, ?string $plainPassword = null)
+    public function __construct(StudentApplication $student)
     {
         $this->student = $student;
-        $this->user = $user;
-        $this->plainPassword = $plainPassword;
     }
 
     /**
@@ -41,7 +36,7 @@ class FinalAcceptanceLetterMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Student Certificate - ' . $this->student->first_name . ' ' . $this->student->last_name,
+            subject: 'Transfer Kabul Mektubu - ' . $this->student->first_name . ' ' . $this->student->last_name,
         );
     }
 
@@ -51,11 +46,9 @@ class FinalAcceptanceLetterMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.final-acceptance-letter',
+            view: 'emails.transfer-letter',
             with: [
                 'student' => $this->student,
-                'user' => $this->user,
-                'plainPassword' => $this->plainPassword,
             ],
         );
     }
@@ -68,10 +61,14 @@ class FinalAcceptanceLetterMail extends Mailable
     public function attachments(): array
     {
         try {
+
             // Ensure student has application relationship loaded
             if (!$this->student->relationLoaded('application')) {
-                $this->student->load('application');
+                $this->student->load('application.program.degree', 'application.program.faculty');
             }
+
+            // Refresh student data to ensure current_university and current_course are loaded
+            $this->student->refresh();
 
             $verificationCode = null;
             if ($this->student->application) {
@@ -79,7 +76,7 @@ class FinalAcceptanceLetterMail extends Mailable
 
                 $documentVerification = DocumentVerification::create([
                     'application_id' => $this->student->application->id,
-                    'document_type' => DocumentTypeEnum::CERTIFICATE,
+                    'document_type' => DocumentTypeEnum::ACCEPTANCE,
                     'verification_code' => $verificationCode,
                     'file_path' => null, // Will be updated after PDF is saved
                 ]);
@@ -88,44 +85,36 @@ class FinalAcceptanceLetterMail extends Mailable
                 $this->student->application->load('documentVerifications');
             }
 
-            Log::info('salammmmmmm: ' . $verificationCode);
-            // Generate PDF from the final acceptance letter blade template
-            $pdf = Pdf::loadView('livewire.admin.applications.student.final-acceptance-letter', [
+            // Generate PDF from the transfer letter blade template
+            $pdf = Pdf::loadView('livewire.admin.applications.student.transfer-letter', [
                 'student' => $this->student,
-                'user' => $this->user,
                 'verificationCode' => $verificationCode,
             ])
-            ->setOptions([
-                'isRemoteEnabled' => false,
-                'isHtml5ParserEnabled' => true,
-                'isFontSubsettingEnabled' => true,
-                'defaultFont' => 'DejaVu Serif'
-            ])
-            ->setPaper('a4', 'portrait');
+                ->setOptions([
+                    'isRemoteEnabled' => false,
+                    'isHtml5ParserEnabled' => true,
+                    'isFontSubsettingEnabled' => true,
+                    'defaultFont' => 'DejaVu Serif'
+                ])->setPaper('a4', 'portrait');
 
-            $fileName = 'Student_Certificate_' . $this->student->first_name . '_' . $this->student->last_name . '_' . now()->format('Y-m-d') . '.pdf';
-            $filePath = 'applications/certificates/' . $fileName;
+            $fileName = 'Transfer_Kabul_Mektubu_' . $this->student->first_name . '_' . $this->student->last_name . '_' . now()->format('Y-m-d') . '.pdf';
+            $filePath = 'applications/transfer-letters/' . $fileName;
 
-            Log::info('testtttttt');
             // Save PDF to storage (uses default disk - local or DO Spaces based on env)
             Storage::put($filePath, $pdf->output());
-
             if ($this->student->application && isset($documentVerification)) {
                 $documentVerification->update([
                     'file_path' => $filePath,
                 ]);
             }
 
-            Log::info('testtttttt');
-            // Update Application model with the PDF path
             return [
                 Attachment::fromData(fn() => $pdf->output(), $fileName)
                     ->withMime('application/pdf'),
             ];
         } catch (\Exception $e) {
-            Log::error('Final acceptance letter PDF generate edərkən xəta: ' . $e->getMessage(), [
+            Log::error('Error generating PDF: ' . $e->getMessage(), [
                 'student_id' => $this->student->id,
-                'user_id' => $this->user->id,
                 'trace' => $e->getTraceAsString()
             ]);
 
