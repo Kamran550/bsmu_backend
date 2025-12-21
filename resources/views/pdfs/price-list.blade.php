@@ -26,20 +26,18 @@
             padding-bottom: 60px;
             background: white;
             position: relative;
-            /* min-height: 100vh; */
+            min-height: 100vh;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             padding: 12px 10px;
-            border: 3px solid #dc2626;
+            border: 3px solid #1e3a8a;
             border-radius: 10px;
-            background-color: #ffffff;
+            background-color: #1e3a8a;
             position: relative;
             min-height: 100px;
-            overflow: hidden;
-            page-break-inside: avoid;
         }
 
         .logo-container {
@@ -68,20 +66,18 @@
 
         .qr-text {
             font-size: 6.5pt;
-            color: #dc2626;
+            color: #fff;
             font-weight: bold;
         }
 
         .header-content {
             padding-top: 8px;
-            overflow: hidden;
-            margin-bottom: 0;
         }
 
         .university-name {
             font-size: 16pt;
             font-weight: bold;
-            color: #dc2626;
+            color: #fff;
             margin-bottom: 6px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -90,73 +86,67 @@
         .programs-title {
             font-size: 13pt;
             font-weight: bold;
-            color: #1e40af;
+            color: #fbbf24;
             margin-bottom: 4px;
         }
 
         .academic-year {
             font-size: 10pt;
             font-weight: bold;
-            color: #dc2626;
+            color: #fff;
         }
 
         .clearfix::after {
             content: "";
             display: table;
             clear: both;
-            height: 0;
-            visibility: hidden;
         }
 
         .degree-section {
-            margin-bottom: 6px;
-            margin-top: 0;
+            margin-bottom: 8px;
             page-break-inside: avoid;
         }
 
         .degree-title {
             font-size: 12pt;
             font-weight: bold;
-            color: #dc2626;
+            color: #1e3a8a;
             margin-bottom: 6px;
             padding: 6px 8px;
-            background-color: #fee2e2;
-            border-left: 4px solid #dc2626;
+            background-color: #dbeafe;
+            border-left: 4px solid #1e3a8a;
         }
 
         .faculty-section {
-            margin-bottom: 6px;
-            margin-top: 0;
+            margin-bottom: 8px;
         }
 
         .faculty-name {
             font-size: 10pt;
             font-weight: bold;
-            color: #b91c1c;
-            margin-bottom: 3px;
-            margin-top: 0;
+            color: #7e22ce;
+            margin-bottom: 5px;
             padding: 4px 6px;
-            background-color: #fecaca;
-            border-left: 3px solid #b91c1c;
+            background-color: #f3e8ff;
+            border-left: 3px solid #7e22ce;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 6px;
-            margin-top: 0;
             page-break-inside: avoid;
             font-size: 7.5pt;
         }
 
         th {
-            background-color: #dc2626;
+            background-color: #7e22ce;
             color: white;
             padding: 6px 5px;
             text-align: left;
             font-weight: bold;
             font-size: 7.5pt;
-            border: 1px solid #b91c1c;
+            border: 1px solid #5b21b6;
             line-height: 1.2;
         }
 
@@ -166,23 +156,23 @@
 
         td {
             padding: 4px 5px;
-            border: 1px solid #cbd5e1;
+            border: 1px solid #d1d5db;
             font-size: 7.5pt;
             line-height: 1.2;
         }
 
         tr:nth-child(even) {
-            background-color: #f1f5f9;
+            background-color: #f9fafb;
         }
 
         tr:hover {
-            background-color: #e2e8f0;
+            background-color: #f3f4f6;
         }
 
         .price {
             text-align: center;
             font-weight: bold;
-            color: #dc2626;
+            color: #1e3a8a;
         }
 
         .footer {
@@ -193,15 +183,15 @@
             text-align: center;
             margin: 0;
             padding: 8px;
-            background-color: #dc2626;
-            border-top: 2px solid #dc2626;
+            background-color: #1e3a8a;
+            border-top: 2px solid #1e3a8a;
             font-size: 8pt;
             color: #ffffff;
             font-weight: bold;
         }
 
         .footer a {
-            color: #1e40af;
+            color: #fbbf24;
             text-decoration: none;
         }
 
@@ -226,7 +216,7 @@
 
 <body>
     <!-- Header -->
-    <div class="header">
+    <div class="header clearfix">
         <div class="logo-container">
             <img src="{{ public_path('images/BSMU-simvol.png') }}" alt="BSMU Logo" class="logo">
         </div>
@@ -262,9 +252,9 @@
                                 <th style="width: 40%;">{{ $translations['program_name'] }}</th>
                                 <th class="center" style="width: 15%;">{{ $translations['standard_annual_fee'] }}</th>
                                 <th class="center" style="width: 15%;">
-                                    {{ $translations['fall_semester'] }}<br>{{ $translations['scholarship_10'] }}</th>
+                                    {{ $translations['fall_semester'] }}<br>{{ $translations['scholarship_50'] }}</th>
                                 <th class="center" style="width: 15%;">
-                                    {{ $translations['spring_semester'] }}<br>{{ $translations['scholarship_10'] }}
+                                    {{ $translations['spring_semester'] }}<br>{{ $translations['scholarship_50'] }}
                                 </th>
                             </tr>
                         </thead>
