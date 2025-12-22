@@ -160,11 +160,18 @@ class ApplicationService
 
 
 
-    protected function calculateGraduationYear(int $duration, int $currentCourse = 0)
+    protected function calculateGraduationYearForStudentApplication(int $duration)
     {
         $currentYear = (int) date('Y');
 
-        return $currentYear + $duration - $currentCourse;
+        return $currentYear + $duration;
+    }
+
+
+    protected function calculateGraduationYearForTransferApplication(int $duration, int $currentCourse)
+    {
+        $currentYear = (int) date('Y');
+        return $currentYear + ($duration - $currentCourse + 1);
     }
 
 
@@ -184,7 +191,7 @@ class ApplicationService
 
             $degreeType = $data['degree_type'];
             $duration = Degree::findOrFail($data['degree_id'])->duration;
-            $graduationYear = $this->calculateGraduationYear($duration);
+            $graduationYear = $this->calculateGraduationYearForStudentApplication($duration);
 
             // Prepare application data
             $applicationData = [
@@ -238,7 +245,6 @@ class ApplicationService
             $applicationNumber = $this->generateApplicationNumber();
             $studentNumber = $this->generateStudentNumber();
             $diplomaNumber = $this->generateDiplomaNumber();
-            $graduationYear = $this->calculateGraduationYear($duration);
 
             // Prepare student application data
             $studentData = [
@@ -349,7 +355,7 @@ class ApplicationService
             $applicationNumber = $this->generateApplicationNumber();
             $studentNumber = $this->generateStudentNumber();
             $diplomaNumber = $this->generateDiplomaNumber();
-            $graduationYear = $this->calculateGraduationYear($duration, $data['current_course']);
+            $graduationYear = $this->calculateGraduationYearForTransferApplication($duration, $data['current_course']);
 
             // Prepare student application data
             $studentData = [
