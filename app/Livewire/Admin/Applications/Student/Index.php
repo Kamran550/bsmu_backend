@@ -35,8 +35,11 @@ class Index extends Component
 
     public function render()
     {
+        $applications = StudentApplication::with('application.program')->paginate(10);
+        $applications->setPath(route('admin.applications.student.index'));
+
         return view('livewire.admin.applications.student.index', [
-            'applications' => StudentApplication::with('application.program')->paginate(10),
+            'applications' => $applications,
         ]);
     }
 }

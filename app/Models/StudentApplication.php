@@ -35,6 +35,7 @@ class StudentApplication extends Model
         'master_transcript_path',
         
         'student_number',
+        'graduation_year',
         'passport_number',
         'study_language',
         'application_number',

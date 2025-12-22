@@ -93,6 +93,10 @@ class ApplicationService
         return $prefix . str_pad($newSequence, 4, '0', STR_PAD_LEFT);
     }
 
+
+
+
+
     /**
      * Generate student number in format: YYYYMMNNNN (10 digits total)
      * Format: Year (4) + Month (2) + Sequence (4)
@@ -154,6 +158,16 @@ class ApplicationService
         return $prefix . str_pad($newSequence, 3, '0', STR_PAD_LEFT);
     }
 
+
+
+    protected function calculateGraduationYear(int $duration, int $currentCourse = 0)
+    {
+        $currentYear = (int) date('Y');
+
+        return $currentYear + $duration - $currentCourse;
+    }
+
+
     /**
      * Store a student application.
      *
@@ -169,6 +183,9 @@ class ApplicationService
             // Get program with degree information
 
             $degreeType = $data['degree_type'];
+            $duration = Degree::findOrFail($data['degree_id'])->duration;
+            $graduationYear = $this->calculateGraduationYear($duration);
+
             // Prepare application data
             $applicationData = [
                 'applicant_type' => ApplicationTypeEnum::STUDENT->value,
@@ -221,6 +238,7 @@ class ApplicationService
             $applicationNumber = $this->generateApplicationNumber();
             $studentNumber = $this->generateStudentNumber();
             $diplomaNumber = $this->generateDiplomaNumber();
+            $graduationYear = $this->calculateGraduationYear($duration);
 
             // Prepare student application data
             $studentData = [
@@ -250,6 +268,7 @@ class ApplicationService
                 'master_diploma_path' => $masterDiplomaPath,
                 'master_transcript_path' => $masterTranscriptPath,
                 'study_language' => $data['teachingLanguage'],
+                'graduation_year' => $graduationYear,
             ];
 
             // Create student application
@@ -260,7 +279,7 @@ class ApplicationService
     }
 
 
-            /**
+    /**
      * Store a student application.
      *
      * @param array $data
@@ -268,106 +287,109 @@ class ApplicationService
      */
 
 
-     public function storeTransferApplication(array $data): Application
-     {
-         return DB::transaction(function () use ($data) {
-             // Get degree and faculty names
- 
-             Log::info('dataaa application:', ['app:', $data]);
-             // Get program with degree information
- 
-             $degreeType = $data['degree_type'];
-             // Prepare application data
-             $applicationData = [
-                 'applicant_type' => ApplicationTypeEnum::TRANSFER->value,
-                 'program_id' => $data['program_id'],
-                 'status' => ApplicationStatusEnum::PENDING->value,
-                 'submitted_at' => now(),
-                 'ip_address' => request()->ip(),
-                 'user_agent' => request()->userAgent(),
-                 'locale' => $data['locale'] ?? 'en',
-             ];
- 
- 
-             Log::info('Application data: ' . json_encode($applicationData));
-             // Create application
-             $application = $this->applicationRepository->create($applicationData);
- 
-             // Handle file uploads
-             $photoIdPath = $this->handleFileUpload($data['photo_id'] ?? null, 'applications/student/photo-ids');
-             $profilePhotoPath = $this->handleFileUpload($data['profile_photo'] ?? null, 'applications/student/profile-photos');
- 
-             // Determine which diploma and transcript fields to use based on degree level
-             $highSchoolDiplomaPath = null;
-             $highSchoolTranscriptPath = null;
-             $bachelorDiplomaPath = null;
-             $bachelorTranscriptPath = null;
-             $masterDiplomaPath = null;
-             $masterTranscriptPath = null;
- 
- 
-             switch ($degreeType) {
-                 case DegreeTypeEnum::BACHELOR->value:
-                     // Bachelor applicants provide high school documents
-                     $highSchoolDiplomaPath = $this->handleFileUpload($data['high_school_diploma'] ?? null, 'applications/student/diplomas/high-school');
-                     $highSchoolTranscriptPath = $this->handleFileUpload($data['high_school_transcript'] ?? null, 'applications/student/transcripts/high-school');
-                     break;
-                 case DegreeTypeEnum::MASTER->value:
-                     // Master applicants provide bachelor documents
-                     $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
-                     $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
-                     break;
-                 case DegreeTypeEnum::phD->value:
-                     // PhD applicants provide bachelor and master documents
-                     $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
-                     $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
-                     $masterDiplomaPath = $this->handleFileUpload($data['master_diploma'] ?? null, 'applications/student/diplomas/master');
-                     $masterTranscriptPath = $this->handleFileUpload($data['master_transcript'] ?? null, 'applications/student/transcripts/master');
-                     break;
-             }
-             // Generate numbers
-             $applicationNumber = $this->generateApplicationNumber();
-             $studentNumber = $this->generateStudentNumber();
-             $diplomaNumber = $this->generateDiplomaNumber();
- 
-             // Prepare student application data
-             $studentData = [
-                 'application_number' => $applicationNumber,
-                 'student_number' => $studentNumber,
-                 'diploma_number' => $diplomaNumber,
-                 'passport_number' => $data['passport_number'] ?? null,
-                 'first_name' => $data['first_name'],
-                 'last_name' => $data['last_name'],
-                 'father_name' => $data['father_name'],
-                 'gender' => $data['gender'],
-                 'date_of_birth' => $data['date_of_birth'],
-                 'place_of_birth' => $data['place_of_birth'],
-                 'nationality' => $data['nationality'],
-                 'native_language' => $data['native_language'],
-                 'phone' => $data['phone'],
-                 'email' => $data['email'],
-                 'country' => $data['country'],
-                 'city' => $data['city'],
-                 'address_line' => $data['address_line'],
-                 'photo_id_path' => $photoIdPath,
-                 'profile_photo_path' => $profilePhotoPath,
-                 'high_school_diploma_path' => $highSchoolDiplomaPath,
-                 'high_school_transcript_path' => $highSchoolTranscriptPath,
-                 'bachelor_diploma_path' => $bachelorDiplomaPath,
-                 'bachelor_transcript_path' => $bachelorTranscriptPath,
-                 'master_diploma_path' => $masterDiplomaPath,
-                 'master_transcript_path' => $masterTranscriptPath,
-                 'study_language' => $data['teachingLanguage'],
-                 'current_university' => $data['current_university'],
-                 'current_course' => $data['current_course'],
-             ];
- 
-             // Create student application
-             $this->applicationRepository->createStudentApplication($application->id, $studentData);
- 
-             return $application->load('studentApplication');
-         });
-     }
+    public function storeTransferApplication(array $data): Application
+    {
+        return DB::transaction(function () use ($data) {
+            // Get degree and faculty names
+
+            Log::info('dataaa application:', ['app:', $data]);
+            // Get program with degree information
+
+            $degreeType = $data['degree_type'];
+            $duration = Degree::findOrFail($data['degree_id'])->duration;
+            // Prepare application data
+            $applicationData = [
+                'applicant_type' => ApplicationTypeEnum::TRANSFER->value,
+                'program_id' => $data['program_id'],
+                'status' => ApplicationStatusEnum::PENDING->value,
+                'submitted_at' => now(),
+                'ip_address' => request()->ip(),
+                'user_agent' => request()->userAgent(),
+                'locale' => $data['locale'] ?? 'en',
+            ];
+
+
+            Log::info('Application data: ' . json_encode($applicationData));
+            // Create application
+            $application = $this->applicationRepository->create($applicationData);
+
+            // Handle file uploads
+            $photoIdPath = $this->handleFileUpload($data['photo_id'] ?? null, 'applications/student/photo-ids');
+            $profilePhotoPath = $this->handleFileUpload($data['profile_photo'] ?? null, 'applications/student/profile-photos');
+
+            // Determine which diploma and transcript fields to use based on degree level
+            $highSchoolDiplomaPath = null;
+            $highSchoolTranscriptPath = null;
+            $bachelorDiplomaPath = null;
+            $bachelorTranscriptPath = null;
+            $masterDiplomaPath = null;
+            $masterTranscriptPath = null;
+
+
+            switch ($degreeType) {
+                case DegreeTypeEnum::BACHELOR->value:
+                    // Bachelor applicants provide high school documents
+                    $highSchoolDiplomaPath = $this->handleFileUpload($data['high_school_diploma'] ?? null, 'applications/student/diplomas/high-school');
+                    $highSchoolTranscriptPath = $this->handleFileUpload($data['high_school_transcript'] ?? null, 'applications/student/transcripts/high-school');
+                    break;
+                case DegreeTypeEnum::MASTER->value:
+                    // Master applicants provide bachelor documents
+                    $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
+                    $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
+                    break;
+                case DegreeTypeEnum::phD->value:
+                    // PhD applicants provide bachelor and master documents
+                    $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
+                    $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
+                    $masterDiplomaPath = $this->handleFileUpload($data['master_diploma'] ?? null, 'applications/student/diplomas/master');
+                    $masterTranscriptPath = $this->handleFileUpload($data['master_transcript'] ?? null, 'applications/student/transcripts/master');
+                    break;
+            }
+            // Generate numbers
+            $applicationNumber = $this->generateApplicationNumber();
+            $studentNumber = $this->generateStudentNumber();
+            $diplomaNumber = $this->generateDiplomaNumber();
+            $graduationYear = $this->calculateGraduationYear($duration, $data['current_course']);
+
+            // Prepare student application data
+            $studentData = [
+                'application_number' => $applicationNumber,
+                'student_number' => $studentNumber,
+                'diploma_number' => $diplomaNumber,
+                'passport_number' => $data['passport_number'] ?? null,
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'father_name' => $data['father_name'],
+                'gender' => $data['gender'],
+                'date_of_birth' => $data['date_of_birth'],
+                'place_of_birth' => $data['place_of_birth'],
+                'nationality' => $data['nationality'],
+                'native_language' => $data['native_language'],
+                'phone' => $data['phone'],
+                'email' => $data['email'],
+                'country' => $data['country'],
+                'city' => $data['city'],
+                'address_line' => $data['address_line'],
+                'photo_id_path' => $photoIdPath,
+                'profile_photo_path' => $profilePhotoPath,
+                'high_school_diploma_path' => $highSchoolDiplomaPath,
+                'high_school_transcript_path' => $highSchoolTranscriptPath,
+                'bachelor_diploma_path' => $bachelorDiplomaPath,
+                'bachelor_transcript_path' => $bachelorTranscriptPath,
+                'master_diploma_path' => $masterDiplomaPath,
+                'master_transcript_path' => $masterTranscriptPath,
+                'study_language' => $data['teachingLanguage'],
+                'current_university' => $data['current_university'],
+                'current_course' => $data['current_course'],
+                'graduation_year' => $graduationYear,
+            ];
+
+            // Create student application
+            $this->applicationRepository->createStudentApplication($application->id, $studentData);
+
+            return $application->load('studentApplication');
+        });
+    }
 
 
 

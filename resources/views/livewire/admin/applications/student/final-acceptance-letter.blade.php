@@ -409,9 +409,8 @@
         <div class="footer-note">
             * It is expected that the person will reach the graduation stage in the
             @php
-                $duration = $student->application->program?->degree?->duration ?? 4;
-                $startYear = now()->addYears($duration)->format('Y');
-                $endYear = now()->addYears($duration + 1)->format('Y');
+                $startYear = $student->graduation_year;
+                $endYear = $student->graduation_year + 1;
             @endphp
             {{ $startYear }}-{{ $endYear }} academic year.
         </div>
