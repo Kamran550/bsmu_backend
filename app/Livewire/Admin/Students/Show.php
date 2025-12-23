@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use App\Enums\DocumentStatusEnum;
 
 #[Layout('layouts.admin')]
 class Show extends Component
@@ -78,7 +79,11 @@ class Show extends Component
                 $studentApplication,
                 now()->format('F d, Y')
             ));
-            
+
+            $this->application->update([
+                'document_status' => DocumentStatusEnum::DIPLOMA_LETTER->value,
+            ]);
+            $this->application->load('studentApplication', 'documentVerifications');
             if ($mailDriver === 'log') {
                 session()->flash('success', 'Diploma log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
             } else {

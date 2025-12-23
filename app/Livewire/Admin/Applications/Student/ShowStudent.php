@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use App\Mail\TransferLetterMail;
+use App\Enums\DocumentStatusEnum;
 
 
 #[Layout('layouts.admin')]
@@ -25,7 +26,7 @@ class ShowStudent extends Component
 
     public function mount(StudentApplication $student): void
     {
-        $this->student = $student->load('application');
+        $this->student = $student->load('application.program.studyLanguages');
     }
 
     public function sendAcceptanceLetter()
@@ -49,6 +50,12 @@ class ShowStudent extends Component
 
             Mail::to($this->student->email)->send(new AcceptanceLetterMail($this->student));
 
+            $this->student->application->update([
+                'document_status' => DocumentStatusEnum::ACCAPTANCE_LETTER->value,
+
+            ]);
+
+            $this->student->load('application');
             if ($mailDriver === 'log') {
                 session()->flash('success', 'Mail log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
             } else {
@@ -107,10 +114,11 @@ class ShowStudent extends Component
     }
 
 
-    
+
     public function sendTransferLetter()
     {
         try {
+
             Log::info('=== sendTransferLetter metodu çağırıldı ===');
             Log::info('Student ID: ' . $this->student->id);
             Log::info('Student Email: ' . ($this->student->email ?? 'YOXDUR'));
@@ -129,6 +137,11 @@ class ShowStudent extends Component
 
             Mail::to($this->student->email)->send(new TransferLetterMail($this->student));
 
+            $this->student->application->update([
+                'document_status' => DocumentStatusEnum::TRANSFER_TURKISH_LETTER->value,
+
+            ]);
+            $this->student->load('application');
             if ($mailDriver === 'log') {
                 session()->flash('success', 'Transfer mektubu log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
             } else {
@@ -154,6 +167,7 @@ class ShowStudent extends Component
     public function sendFinalAcceptanceLetter()
     {
         try {
+
             Log::info('=== sendFinalAcceptanceLetter metodu çağırıldı ===');
             Log::info('Student ID: ' . $this->student->id);
             Log::info('Student Email: ' . ($this->student->email ?? 'YOXDUR'));
@@ -246,6 +260,10 @@ class ShowStudent extends Component
 
             Mail::to($this->student->email)->send(new FinalAcceptanceLetterMail($this->student, $user, $plainPassword));
 
+            $this->student->application->update([
+                'document_status' => DocumentStatusEnum::CERTIFICATE_ENGLISH_LETTER->value,
+            ]);
+            $this->student->load('application');
             if ($mailDriver === 'log') {
                 session()->flash('success', 'Tam qəbul məktubu log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
             } else {
@@ -269,6 +287,7 @@ class ShowStudent extends Component
     public function sendFinalAcceptanceLetterTurkish()
     {
         try {
+
             Log::info('=== sendFinalAcceptanceLetterTurkish metodu çağırıldı ===');
             Log::info('Student ID: ' . $this->student->id);
             Log::info('Student Email: ' . ($this->student->email ?? 'YOXDUR'));
@@ -362,6 +381,10 @@ class ShowStudent extends Component
 
             Mail::to($this->student->email)->send(new FinalAcceptanceLetterTurkishMail($this->student, $user, $plainPassword));
 
+            $this->student->application->update([
+                'document_status' => DocumentStatusEnum::CERTIFICATE_TURKISH_LETTER->value,
+            ]);
+            $this->student->load('application');
             if ($mailDriver === 'log') {
                 session()->flash('success', 'Öğrenci belgesi log faylına yazıldı. SMTP konfiqurasiyası üçün .env faylında MAIL_MAILER=smtp təyin edin.');
             } else {

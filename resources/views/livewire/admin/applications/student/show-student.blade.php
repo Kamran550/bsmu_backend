@@ -2,9 +2,11 @@
     use Illuminate\Support\Facades\Storage;
     use Illuminate\Support\Str;
     use App\Enums\ApplicationStatusEnum;
+    use App\Enums\DocumentStatusEnum;
 
     $application = $student->application;
     $formatStatus = static fn(?string $status) => $status ? str($status)->replace('_', ' ')->title()->value() : '—';
+    $formatDocumentStatus = static fn(?string $status) => $status ? str($status)->replace('_', ' ')->title()->value() : '—';
 
     $getStatusBadgeClass = static function (?string $status): string {
         if (!$status) {
@@ -42,12 +44,30 @@
         'Address' => $student->address_line ?? '—',
     ];
 
+    // Get study language from program_study_language table if available
+    $studyLanguage = '—';
+    if ($student->study_language && $application?->program?->studyLanguages) {
+        $programStudyLang = $application->program->studyLanguages
+            ->where('language', strtolower($student->study_language))
+            ->where('is_available', true)
+            ->first();
+        if ($programStudyLang) {
+            $studyLanguage = strtoupper($programStudyLang->language);
+        } else {
+            $studyLanguage = strtoupper($student->study_language);
+        }
+    } elseif ($student->study_language) {
+        $studyLanguage = strtoupper($student->study_language);
+    }
+
     $programInfo = [
         'Application Type' => $application?->applicant_type ?? '—',
         'Program' => $application?->program?->name ?? '—',
         'Degree' => $application?->program?->degree?->name ?? '—',
         'Faculty' => $application?->program?->faculty?->name ?? '—',
-        'Study Language' => $student->study_language ?? '—',
+        'Study Language' => $studyLanguage,
+        'Student Number' => $student->student_number ?? '—',
+        'Document Status' => $formatDocumentStatus($application?->document_status),
         'Application Number' => $student->application_number ?? '—',
         'Diploma Number' => $student->diploma_number ?? '—',
         'Status' => $formatStatus($application?->status?->value ?? $application?->status),

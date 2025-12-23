@@ -116,7 +116,6 @@ class FinalAcceptanceLetterMail extends Mailable
                 ]);
             }
 
-            Log::info('testtttttt');
             // Update Application model with the PDF path
             return [
                 Attachment::fromData(fn() => $pdf->output(), $fileName)

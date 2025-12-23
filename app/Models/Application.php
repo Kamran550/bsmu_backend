@@ -17,6 +17,7 @@ class Application extends Model
         'applicant_type',
         'faculty_name',
         'status',
+        'document_status',
         'submitted_at',
         'reviewed_at',
         'reviewed_by',
