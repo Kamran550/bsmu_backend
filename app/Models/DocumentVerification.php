@@ -13,6 +13,7 @@ class DocumentVerification extends Model
 
     protected $fillable = [
         'application_id',
+        'payment_id',
         'document_type',
         'verification_code',
         'file_path',

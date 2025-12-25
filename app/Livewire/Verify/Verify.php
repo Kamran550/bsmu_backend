@@ -22,7 +22,7 @@ class Verify extends Component
     {
         // Check if verification code is provided in query parameter (for QR code scanning)
         $queryCode = request()->query('verificationcode');
-        
+
         if ($queryCode) {
             $this->verificationCode = strtoupper(trim($queryCode));
             // Automatically verify if code is provided in URL
@@ -35,7 +35,7 @@ class Verify extends Component
         $this->reset(['message', 'messageType', 'application']);
 
         if (empty($this->verificationCode)) {
-            $this->message = 'Zəhmət olmasa təsdiqlənmə kodunu daxil edin.';
+            $this->message = 'Please enter the verification code.';
             $this->messageType = 'error';
             return;
         }
@@ -47,14 +47,14 @@ class Verify extends Component
         $application = DocumentVerification::where('verification_code', $verificationCode)->first();
 
         if (!$application) {
-            $this->message = 'Yanlış təsdiqlənmə kodu. Zəhmət olmasa yenidən yoxlayın.';
+            $this->message = 'Wrong verification code. Please try again.';
             $this->messageType = 'error';
             return;
         }
 
         $this->application = $application;
-        
-        $this->message = 'Təsdiqlənmə uğurlu oldu!';
+
+        $this->message = 'Verification successful!';
         $this->messageType = 'success';
     }
 
@@ -76,4 +76,3 @@ class Verify extends Component
         return view('livewire.verify.verify');
     }
 }
-

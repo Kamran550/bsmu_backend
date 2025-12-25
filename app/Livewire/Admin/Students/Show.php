@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Students;
 use App\Mail\DiplomaMail;
 use App\Models\Application;
 use App\Models\User;
+use App\Models\Payments;
+use App\Enums\PaymentStatusEnum;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Attributes\Layout;
@@ -110,7 +112,15 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.admin.students.show');
+        // Get paid payments for this student
+        $paidPayments = Payments::where('user_id', $this->student->id)
+            ->where('status', PaymentStatusEnum::PAID->value)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('livewire.admin.students.show', [
+            'paidPayments' => $paidPayments
+        ]);
     }
 }
 
