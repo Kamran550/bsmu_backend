@@ -143,7 +143,7 @@
         .signature-title {
             font-size: 7.5pt;
             color: #6b7280;
-            padding-right: 108px;
+            padding-right: 50px;
         }
 
         .payment-table {
@@ -232,16 +232,16 @@
     <div class="header">
         <div class="logo-container">
             @php
-                $logoPath = public_path(path: 'images/EIPU-simvol.png');
+                $logoPath = public_path(path: 'images/BSMU-simvol.png');
                 $logoData = file_exists($logoPath) ? base64_encode(file_get_contents($logoPath)) : '';
                 $logoMime = 'image/jpeg';
             @endphp
             @if ($logoData)
-                <img src="data:{{ $logoMime }};base64,{{ $logoData }}" alt="EIPU Logo" class="logo">
+                <img src="data:{{ $logoMime }};base64,{{ $logoData }}" alt="BSMU Logo" class="logo">
             @endif
             <div class="university-name-container">
                 <div class="university-name">
-                    EUROPEAN INTERNATIONAL PEACE UNIVERSITY
+                    BALKAN SCIENCE AND MANAGEMENT UNIVERSITY
                 </div>
             </div>
         </div>
@@ -253,7 +253,7 @@
     </div>
 
     <!-- Receipt Information -->
-    <div class="section-header">Invoiced Person: {{ $invoicedNumber }}</div>
+    <div class="section-header">INVOICED NUMBER: {{ $invoicedNumber }}</div>
     <div class="info-grid">
         <div class="info-row">
             <div class="info-label">Name Surname</div>
@@ -320,29 +320,34 @@
         <tbody>
             <tr>
                 <td><strong>BANK NAME</strong></td>
-                <td>BANK MILLENNIUM S.A.</td>
+                <td>UNICREDIT BANK SRBIJA A.D.</td>
             </tr>
             <tr>
                 <td><strong>CITY / COUNTRY</strong></td>
-                <td>WARSZAWA - POLAND</td>
+                <td>BEOGRAD - SERBIA</td>
             </tr>
             <tr>
                 <td><strong>ACCOUNT NAME</strong></td>
-                <td>EURO.INTE AND PEACE.UNIVE.SP.ZOO</td>
+                <td>BALKAN SCIENCE AND MANAGEMENT UNIVERSITY</td>
+            </tr>
+            <tr>
+                <td><strong>IBAN</strong></td>
+                <td>RS3510509829453923013210</td>
             </tr>
             <tr>
                 <td><strong>SWIFT CODE</strong></td>
-                <td>BIGBPLPW</td>
+                <td>BACXRSBG</td>
             </tr>
         </tbody>
     </table>
 
+    <br>
     <div class="signature-section">
         <div class="signature-name">
             Prof. Dr. Serdar KORAL
         </div>
         <div class="signature-title">
-            Rektör
+            Rector
         </div>
     </div>
 
@@ -364,12 +369,12 @@
                         on {{ $payment->created_at->format('d/m/Y') }} with document number
                         <strong>{{ $verificationCode }}</strong>.
                         The validity of the document can be confirmed by scanning the QR code or by document number at
-                        <strong> {{ 'https://' . config('app.verify_domain', 'verify.eipu.edu.pl') }} </strong>
+                        <strong> {{ 'https://' . config('app.verify_domain', 'verify.bsmu.edu.rs') }} </strong>
                     </div>
                 </td>
                 <td style="width: 70px; vertical-align: top;">
                     @php
-                        $verifyDomain = config('app.verify_domain', 'verify.eipu.edu.pl');
+                        $verifyDomain = config('app.verify_domain', 'verify.bsmu.edu.rs');
                         $verificationUrl = 'https://' . $verifyDomain . '?verificationcode=' . $verificationCode;
                         $qrCodeSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
                             ->size(120)
@@ -390,9 +395,9 @@
                 <td class="footer-info" style="text-align: center;">
                     <p style="margin: 5px 0;">
                         <strong>Phone:</strong> +48 579 369 968 |
-                        <strong>Email:</strong> info@eipu.edu.pl |
-                        <strong>Website:</strong> www.eipu.edu.pl |
-                        <strong>Address:</strong> Ogrodowa 5800-876 Warsaw / Poland
+                        <strong>Email:</strong> info@bsmu.edu.rs |
+                        <strong>Website:</strong> www.bsmu.edu.rs |
+                        <strong>Address:</strong> 10000 Belgrade, Serbia
                     </p>
                 </td>
             </tr>

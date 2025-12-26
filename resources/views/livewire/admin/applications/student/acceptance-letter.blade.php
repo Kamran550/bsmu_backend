@@ -564,6 +564,10 @@
                 <td>BALKAN SCIENCE MANAGEMENT UNIVERSITY</td>
             </tr>
             <tr>
+                <td><strong>IBAN</strong></td>
+                <td>RS3510509829453923013210</td>
+            </tr>
+            <tr>
                 <td><strong>SWIFT CODE</strong></td>
                 <td>BACXRSBG</td>
             </tr>

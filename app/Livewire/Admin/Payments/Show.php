@@ -66,7 +66,7 @@ class Show extends Component
             $academicYearRange = $academicYear . '-' . ($academicYear + 1);
 
             $invoicedNumber = $this->payment->invoiced_number ?? 'N/A';
-            $studentNumber = $this->payment->user->applications()->first()?->studentApplication?->application_number ?? 'N/A';
+            $studentNumber = $this->payment->user->applications()->first()?->studentApplication?->student_number ?? 'N/A';
             $passportNumber = $this->payment->user->applications()->first()?->studentApplication?->passport_number ?? 'N/A';
 
             // Get application number if exists
