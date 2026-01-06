@@ -141,6 +141,16 @@
             text-transform: uppercase;
         }
 
+        .countries-text {
+            text-align: center;
+            font-size: 8pt;
+            color: #1a365d;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 1mm;
+        }
+
+
         /* Main Content */
         .main-content {
             position: relative;
@@ -281,6 +291,21 @@
             font-style: italic;
         }
 
+        .location-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8mm;
+            flex-wrap: wrap;
+        }
+
+        .location-item {
+            font-size: 9pt;
+            color: #333;
+            font-style: italic;
+            text-align: center;
+        }
+
         .date {
             font-size: 9pt;
             color: #333;
@@ -403,6 +428,8 @@
                     <div class="university-info">
                         <div class="university-name">Balkan Science and Management University</div>
                         <div class="university-subtitle">Business Balkan Education Alliance</div>
+                        <div class="countries-text">SERBIA | LUXEMBOURG | TÜRKİYE</div>
+
                     </div>
                 </div>
             </div>
@@ -441,12 +468,16 @@
                                         {{ $studentApplication->diploma_text['en'] ?? '' }}
                                     </div>
                                     <div class="e-signature">✓ e-signed / e-imzalıdır</div>
+                                    <div class="location-item">Secretary General / Genel Sekreter: Dr. Jovik Terzan
+                                    </div>
+
                                 </td>
                                 <td>
                                     <div class="diploma-text-content">
                                         {{ $studentApplication->diploma_text['tr'] ?? '' }}
                                     </div>
                                     <div class="e-signature">✓ e-signed / e-imzalıdır</div>
+                                    <div class="location-item">Rector / Rektör: Prof. Dr. Serdar Koral</div>
                                 </td>
                             </tr>
                         </table>
@@ -455,7 +486,6 @@
 
                 <!-- Location & Date -->
                 <div class="location-date">
-                    <div class="location">Rector: Prof. Dr. Eraytun Koralmaz</div>
                     <div class="date">{{ $graduationDate ?? now()->format('F d, Y') }}</div>
                 </div>
             </div>
