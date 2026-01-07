@@ -401,8 +401,11 @@
             {{ $student->application->program?->degree?->duration ?? 4 }} yıldır.
         </div>
         <div class="footer-note">
-            * {{$student->application->program?->degree?->getName('TR') ?: $student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A') }} Eğitim-Öğretim Yönergesinin ilgili maddeleri uyarınca programa kayıtlı kişilerin öğrencilik haklarından
-            yararlanabilmelerini teminen dersler için gözetilen devam, katılım ve sınav koşullarını bir bütün olarak eksiksiz
+            *
+            {{ $student->application->program?->degree?->getName('TR') ?: $student->application->program?->degree?->description ?? ($student->application->program?->degree?->name ?? 'N/A') }}
+            Eğitim-Öğretim Yönergesinin ilgili maddeleri uyarınca programa kayıtlı kişilerin öğrencilik haklarından
+            yararlanabilmelerini teminen dersler için gözetilen devam, katılım ve sınav koşullarını bir bütün olarak
+            eksiksiz
             şekilde yerine getirmeleri gerekmektedir. Aksi takdirde ilgilisinin programla ilişiği kesilir.
         </div>
         <div class="footer-note">
@@ -443,14 +446,15 @@
                 <!-- Text Box -->
                 <td style="padding-left: 10px; margin-top: 8x;">
                     <div
-                    style="background: #f0f0f0; padding: 12px 15px; border-radius: 8px; font-size: 11px; line-height: 1.2;">
-                    Bu belge,
-                    {{ now()->format('d/m/Y') }} tarihinde
-                    <strong>{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</strong> adına
-                    <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>
-                    belge numarasıyla elektronik olarak imzalanmıştır. Belgenin geçerliliği, QR kodunu tarayarak veya belge numarasını kullanarak
-                    <strong>{{ $student->getVerificationUrl() }}</strong> adresinden doğrulanabilir.
-                </div>
+                        style="background: #f0f0f0; padding: 12px 15px; border-radius: 8px; font-size: 11px; line-height: 1.2;">
+                        Bu belge,
+                        {{ now()->format('d/m/Y') }} tarihinde
+                        <strong>{{ tr_upper($student->first_name . ' ' . $student->last_name) }}</strong> adına
+                        <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>
+                        belge numarasıyla elektronik olarak imzalanmıştır. Belgenin geçerliliği, QR kodunu tarayarak
+                        veya belge numarasını kullanarak
+                        <strong>{{ $student->getVerificationUrl() }}</strong> adresinden doğrulanabilir.
+                    </div>
 
                 </td>
                 <td style="width: 80px; vertical-align: top;">
@@ -480,13 +484,14 @@
                         Fully Accredited Multinational Higher Education Institution and Global Service Provider
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        ISTASYON MAH. 2325 SK. NO: 18 / 1 ETIMESGUT ANKARA / Türkiye [ BSMU ]
+                        Cumhuriyet, Şehitler Cd. No:16, 34520 Beylikdüzü / İstanbul [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        Ogrodowa 5800-876 Warsaw / Poland [ BSMU ]
+                        2. Tošin bunar 272, 11070 Novi Beograd, Belgrade / Serbia
+                        [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        32-36 Bd d'Avranches, 1160 Bonnevoie-Nord-Verlorenkost / Luxembourg [ BSMU ]
+                        Boulevard du Roi Albert II 5, 1210 Saint-Josse-ten-Noode Brussel / Belgium [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
                         <strong>Tel:</strong> +90 5386796595 | +48 579 369 968 | +352 661115815

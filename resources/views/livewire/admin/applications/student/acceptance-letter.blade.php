@@ -463,7 +463,8 @@
             We are pleased to inform you that the Admission Committee of Balkan Science and Management University has
             carefully reviewed your application for admission to
             <strong>{{ $student->application->program?->name ?? 'Program' }}</strong>
-            ({{ $student->application->program?->degree?->name ?? 'Degree' }}) for the 2025-2026 – Fall. It is our
+            ({{ $student->application->program?->degree?->name ?? 'Degree' }}) for the
+            {{ now()->format('Y') }}-{{ now()->addYear()->format('Y') }} – Fall. It is our
             pleasure to inform you that you have been granted conditional acceptance to the program. We extend our warm
             congratulations on this achievement.
         </p>
@@ -650,7 +651,7 @@
     </div> --}}
 
 
-    
+
     <!-- Required Documents for Final Registration -->
     <div class="section-header">Required Documents for Final Registration</div>
 
@@ -817,7 +818,7 @@
             <tr>
                 <td style="text-align: center; font-size: 11px; line-height: 1.1;">
                     <p style="margin: 5px 0;">
-                        <strong>Tel:</strong> +381 11 3302 330 |
+                        <strong>Tel:</strong> +32 483 38 31 70 |
                         <strong>Email:</strong> international@bsmu.edu.rs |
                         <strong>Address:</strong> Belgrade, Serbia |
                         <strong>Website:</strong> www.bsmu.edu.rs

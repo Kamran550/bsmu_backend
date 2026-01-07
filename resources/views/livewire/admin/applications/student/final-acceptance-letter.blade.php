@@ -480,13 +480,16 @@
                         Fully Accredited Multinational Higher Education Institution and Global Service Provider
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        ISTASYON MAH. 2325 SK. NO: 18 / 1 ETIMESGUT ANKARA / Türkiye [ BSMU ]
+                        1. Cumhuriyet, Şehitler Cd. No:16, 34520 Beylikdüzü / İstanbul
+                        [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        Ogrodowa 5800-876 Warsaw / Poland [ BSMU ]
+                        2. Tošin bunar 272, 11070 Novi Beograd, Belgrade / Serbia
+                        [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        32-36 Bd d'Avranches, 1160 Bonnevoie-Nord-Verlorenkost / Luxembourg [ BSMU ]
+                        3. Boulevard du Roi Albert II 5, 1210 Saint-Josse-ten-Noode Brussel / Belgium
+                        [ BSMU ]
                     </p>
                     <p style="margin: 4px 0; text-align: center;">
                         <strong>Tel:</strong> +90 5386796595 | +48 579 369 968 | +352 661115815

@@ -18,21 +18,48 @@ class Show extends Component
 {
     public User $student;
     public ?Application $application = null;
+    public ?string $graduationDate = null;
 
     public function mount(User $student): void
     {
         $this->student = $student;
-        
+        $this->graduationDate = $student->graduation_date?->format('Y-m-d');
+
+
         // Get student's latest application with all related data
         $this->application = Application::with([
             'program.degree',
             'program.faculty',
             'studentApplication'
         ])
-        ->where('user_id', $student->id)
-        ->latest()
-        ->first();
+            ->where('user_id', $student->id)
+            ->latest()
+            ->first();
     }
+
+    public function updateGraduationDate(): void
+    {
+        $this->validate([
+            'graduationDate' => 'required|date',
+        ]);
+
+        try {
+            $this->student->update([
+                'graduation_date' => $this->graduationDate
+            ]);
+
+            session()->flash('success', 'Graduation date updated successfully.');
+
+            Log::info('Graduation date updated', [
+                'student_id' => $this->student->id,
+                'graduation_date' => $this->graduationDate
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Graduation date update error: ' . $e->getMessage());
+            session()->flash('error', 'Graduation date update error: ' . $e->getMessage());
+        }
+    }
+
 
     public function sendDiploma(): void
     {
@@ -40,7 +67,7 @@ class Show extends Component
             Log::info('=== sendDiploma metodu çağırıldı ===');
             Log::info('Student ID: ' . $this->student->id);
             Log::info('Student Email: ' . ($this->student->email ?? 'YOXDUR'));
-            
+
             if (!$this->student->email) {
                 Log::warning('Email ünvanı yoxdur!');
                 session()->flash('error', 'Tələbənin email ünvanı yoxdur.');
@@ -72,14 +99,21 @@ class Show extends Component
 
             $studentApplication = $freshApplication->studentApplication;
 
+
+            // Check if graduation date is set
+            if (!$this->graduationDate) {
+                session()->flash('error', 'Please set the graduation date first.');
+                return;
+            }
+
             // Check mail configuration
             $mailDriver = config('mail.default');
-            
+
             Mail::to($this->student->email)->send(new DiplomaMail(
                 $this->student,
                 $freshApplication,
                 $studentApplication,
-                now()->format('F d, Y')
+                \Carbon\Carbon::parse($this->graduationDate)->format('F d, Y')
             ));
 
             $this->application->update([
@@ -100,12 +134,12 @@ class Show extends Component
                 'line' => $e->getLine(),
                 'trace' => $e->getTraceAsString()
             ]);
-            
+
             $errorMessage = 'Diploma göndərilərkən xəta baş verdi: ' . $e->getMessage();
             if (str_contains($e->getMessage(), 'Connection') || str_contains($e->getMessage(), 'SMTP')) {
                 $errorMessage .= ' SMTP konfiqurasiyasını yoxlayın.';
             }
-            
+
             session()->flash('error', $errorMessage);
         }
     }
@@ -123,4 +157,3 @@ class Show extends Component
         ]);
     }
 }
-

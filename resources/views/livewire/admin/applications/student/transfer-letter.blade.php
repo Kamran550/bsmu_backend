@@ -172,7 +172,7 @@
 
         <div class="contact-info">
             <strong>E-posta:</strong> international@bsmu.edu.rs<br>
-            <strong>Telefon:</strong> +381 11 3302 330<br>
+            <strong>Telefon:</strong> +32 483 38 31 70<br>
             <strong>Tarih:</strong> {{ now()->format('d/m/Y') }}
         </div>
     </div>
