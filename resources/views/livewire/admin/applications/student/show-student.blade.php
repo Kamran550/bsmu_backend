@@ -75,6 +75,7 @@
         'Status' => $formatStatus($application?->status?->value ?? $application?->status),
         'Submitted At' => $application?->submitted_at?->format('d.m.Y H:i') ?? '—',
         'Reviewed At' => $application?->reviewed_at?->format('d.m.Y H:i') ?? '—',
+        'Scholarship Status' => $student->scholarship_status ?? '—',
     ];
 
     // Determine which diploma and transcript to show based on degree level
