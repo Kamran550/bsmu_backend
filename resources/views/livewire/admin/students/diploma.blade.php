@@ -427,7 +427,7 @@
                     @endif
                     <div class="university-info">
                         <div class="university-name">Balkan Science and Management University</div>
-                        <div class="university-subtitle">Business Balkan Education Alliance</div>
+                        <div class="university-subtitle">Business Eurasia Education Alliance</div>
                         <div class="countries-text">SERBIA | LUXEMBOURG | TÜRKİYE</div>
 
                     </div>
@@ -477,7 +477,7 @@
                                         {{ $studentApplication->diploma_text['tr'] ?? '' }}
                                     </div>
                                     <div class="e-signature">✓ e-signed / e-imzalıdır</div>
-                                    <div class="location-item">Rector / Rektör: Prof. Dr. Serdar Koral</div>
+                                    <div class="location-item">Rector / Rektör: Prof. Dr. Eraytun Koralmaz</div>
                                 </td>
                             </tr>
                         </table>
