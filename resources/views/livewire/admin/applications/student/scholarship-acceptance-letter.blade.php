@@ -562,7 +562,6 @@
             completing the transfer.
         </p>
     </div>
-    <br>
     <!-- Payment Table -->
     <table class="payment-table">
         <thead>
