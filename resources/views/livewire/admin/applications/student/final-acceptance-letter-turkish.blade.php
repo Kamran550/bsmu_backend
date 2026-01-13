@@ -492,7 +492,7 @@
                         Cumhuriyet, Şehitler Cd. No:16, 34520 Beylikdüzü / İstanbul [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
-                        2. Tošin bunar 272, 11070 Novi Beograd, Belgrade / Serbia
+                        Jurija Gagarina 12, 11070, Beograd, Serbia
                         [ BSMU ]
                     </p>
                     <p style="margin: 2px 0; text-align: center;">
