@@ -819,7 +819,7 @@
             <tr>
                 <td style="text-align: center; font-size: 11px; line-height: 1.1;">
                     <p style="margin: 5px 0;">
-                        <strong>Tel:</strong> +32 483 38 31 70 |
+                        <strong>Tel:</strong> +381 11 3302 330 |
                         <strong>Email:</strong> international@bsmu.edu.rs |
                         <strong>Address:</strong> Belgrade, Serbia |
                         <strong>Website:</strong> www.bsmu.edu.rs

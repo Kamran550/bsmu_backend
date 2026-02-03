@@ -481,7 +481,7 @@
                 <!-- LEFT SIDE -->
                 <td style="width: 100%; font-size: 6pt; line-height: 1.1;">
                     <p style="margin: 4px 0; text-align: center;">
-                        <strong>Tel:</strong> +90 5386796595 | +48 579 369 968 | +352 661115815
+                        <strong>Tel:</strong> +90 505 621 26 26 | +32 483 38 31 70
                     </p>
                     <p style="margin: 4px 0; text-align: center;">
                         <strong>e-mail:</strong> info@bsmu.edu.rs | rectorate@bsmu.edu.rs | <strong>Web:</strong>
