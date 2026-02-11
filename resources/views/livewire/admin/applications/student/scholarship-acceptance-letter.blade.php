@@ -470,7 +470,7 @@
     <!-- Introduction Content -->
     <div class="content">
         <p>
-            We are pleased to inform you that the Admission Committee of European International Peace University has
+            We are pleased to inform you that the Admission Committee of Balkan Science and Management University has
             carefully reviewed your application for admission to
             <strong>{{ $student->application->program?->name ?? 'Program' }}</strong>
             ({{ $student->application->program?->degree?->name ?? 'Degree' }}) for the
