@@ -20,6 +20,8 @@ class Edit extends Component
     public ?int $price_per_year = null;
     public bool $study_language_en = true;
     public bool $study_language_tr = false;
+    public bool $is_thesis = true;
+
 
     public function mount(?Program $program = null)
     {
@@ -51,7 +53,7 @@ class Edit extends Component
         $trTranslation = $program->translations->filter(function ($translation) {
             return strtolower($translation->language) === 'tr';
         })->first();
-        
+
         $this->name_en = $enTranslation?->name ?? $program->name ?? '';
         $this->name_tr = $trTranslation?->name ?? '';
 
@@ -64,6 +66,7 @@ class Edit extends Component
         })->first();
 
         $this->study_language_en = $enStudyLang?->is_available ?? true;
+        $this->is_thesis = (bool) ($program->is_thesis ?? true);
         $this->study_language_tr = $trStudyLang?->is_available ?? false;
     }
 
@@ -83,6 +86,7 @@ class Edit extends Component
             'price_per_year' => ['required', 'integer', 'min:0'],
             'study_language_en' => ['boolean'],
             'study_language_tr' => ['boolean'],
+            'is_thesis' => ['boolean'],
         ];
     }
 
@@ -130,7 +134,10 @@ class Edit extends Component
                 'degree_id' => $this->degree_id,
                 'faculty_id' => $this->faculty_id,
                 'price_per_year' => $this->price_per_year,
+                'is_thesis' => $this->is_thesis,
+
             ]);
+
 
             // Update or create EN translation (case-insensitive search)
             $enTranslation = $this->program->translations()
@@ -197,13 +204,14 @@ class Edit extends Component
 
         // Reset form
         $this->reset([
-            'name_en', 
-            'name_tr', 
-            'degree_id', 
-            'faculty_id', 
+            'name_en',
+            'name_tr',
+            'degree_id',
+            'faculty_id',
             'price_per_year',
             'study_language_en',
-            'study_language_tr'
+            'study_language_tr',
+            'is_thesis'
         ]);
         $this->resetValidation();
 
