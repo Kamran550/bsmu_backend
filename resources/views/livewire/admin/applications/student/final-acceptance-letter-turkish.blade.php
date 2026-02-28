@@ -318,7 +318,7 @@
                 <div class="info-row">
                     <div class="info-label">Eğitim Düzeyi</div>
                     <div class="info-value">
-                        {{ degree_type_to_word_turkish($student->application->program?->degree?->name ?? 'N/A', $student->application->program?->is_thesis ?? false) }}
+                        {{ tr_upper($student->application->program?->degree?->getDescription('TR') ?: $student->application->program?->degree?->getName('TR') ?? 'N/A') }}
                     </div>
                 </div>
                 <div class="info-row">

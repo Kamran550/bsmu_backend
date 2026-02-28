@@ -321,7 +321,7 @@
                 <div class="info-row">
                     <div class="info-label">Education Level</div>
                     <div class="info-value">
-                        {{ degree_type_to_word($student->application->program?->degree?->name ?? 'N/A', $student->application->program?->is_thesis ?? false) }}
+                        {{ tr_upper($student->application->program?->degree?->getDescription('EN') ?: $student->application->program?->degree?->getName('EN') ?? 'N/A') }}
                     </div>
                 </div>
                 <div class="info-row">
@@ -343,7 +343,8 @@
                 </div>
                 <div class="info-row">
                     <div class="info-label">Scholarship Status</div>
-                    <div class="info-value">{{ $student->scholarship_status . ' Scholarship' ?? '75% Scholarship' }}</div>
+                    <div class="info-value">{{ $student->scholarship_status . ' Scholarship' ?? '75% Scholarship' }}
+                    </div>
                 </div>
                 <div class="info-row">
                     <div class="info-label">Class</div>

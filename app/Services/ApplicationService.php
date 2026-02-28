@@ -167,12 +167,19 @@ class ApplicationService
         return $currentYear + $duration;
     }
 
-
-    protected function calculateGraduationYearForTransferApplication(int $duration, int $currentCourse)
+    protected function calculateGraduationYearForTransferApplication(int $duration, int $currentCourse, ?string $degreeType = null)
     {
         $currentYear = (int) date('Y');
+
+        if ($degreeType === DegreeTypeEnum::MASTER_WITHOUT_THESIS->value) {
+            return $currentYear;
+        }
+
         return $currentYear + ($duration - $currentCourse + 1);
     }
+
+
+
 
 
     /**
@@ -239,6 +246,11 @@ class ApplicationService
                     $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
                     $masterDiplomaPath = $this->handleFileUpload($data['master_diploma'] ?? null, 'applications/student/diplomas/master');
                     $masterTranscriptPath = $this->handleFileUpload($data['master_transcript'] ?? null, 'applications/student/transcripts/master');
+                    break;
+                case DegreeTypeEnum::MASTER_WITHOUT_THESIS->value:
+                    // Master without thesis applicants provide bachelor documents
+                    $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
+                    $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
                     break;
             }
             // Generate numbers
@@ -350,12 +362,17 @@ class ApplicationService
                     $masterDiplomaPath = $this->handleFileUpload($data['master_diploma'] ?? null, 'applications/student/diplomas/master');
                     $masterTranscriptPath = $this->handleFileUpload($data['master_transcript'] ?? null, 'applications/student/transcripts/master');
                     break;
+                case DegreeTypeEnum::MASTER_WITHOUT_THESIS->value:
+                    // Master without thesis applicants provide bachelor documents
+                    $bachelorDiplomaPath = $this->handleFileUpload($data['bachelor_diploma'] ?? null, 'applications/student/diplomas/bachelor');
+                    $bachelorTranscriptPath = $this->handleFileUpload($data['bachelor_transcript'] ?? null, 'applications/student/transcripts/bachelor');
+                    break;
             }
             // Generate numbers
             $applicationNumber = $this->generateApplicationNumber();
             $studentNumber = $this->generateStudentNumber();
             $diplomaNumber = $this->generateDiplomaNumber();
-            $graduationYear = $this->calculateGraduationYearForTransferApplication($duration, $data['current_course']);
+            $graduationYear = $this->calculateGraduationYearForTransferApplication($duration, $data['current_course'], $data['degree_type'] ?? null);
 
             // Prepare student application data
             $studentData = [
