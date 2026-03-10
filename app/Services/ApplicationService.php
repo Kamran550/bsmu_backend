@@ -175,7 +175,7 @@ class ApplicationService
             return $currentYear;
         }
 
-        return $currentYear + ($duration - $currentCourse + 1);
+        return $currentYear + ($duration - $currentCourse);
     }
 
 
