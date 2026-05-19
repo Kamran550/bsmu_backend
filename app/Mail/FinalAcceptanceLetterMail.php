@@ -103,7 +103,7 @@ class FinalAcceptanceLetterMail extends Mailable
             ])
             ->setPaper('a4', 'portrait');
 
-            $fileName = 'Student_Certificate_' . $this->student->first_name . '_' . $this->student->last_name . '_' . now()->format('Y-m-d') . '.pdf';
+            $fileName = 'Student_Certificate_' . $this->student->first_name . '_' . $this->student->last_name . '_' . now()->format('Y-m-d') . '_' . Str::uuid() . '.pdf';
             $filePath = 'applications/certificates/' . $fileName;
 
             Log::info('testtttttt');

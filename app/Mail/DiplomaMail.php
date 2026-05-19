@@ -122,7 +122,7 @@ class DiplomaMail extends Mailable
             // Clean filename
             $studentName = preg_replace('/[^A-Za-z0-9_]/', '', $studentName);
             
-            $fileName = 'Diploma_' . $studentName . '_' . now()->format('Y-m-d') . '.pdf';
+            $fileName = 'Diploma_' . $studentName . '_' . now()->format('Y-m-d') . '_' . Str::uuid() . '.pdf';
             $filePath = 'applications/diplomas/' . $fileName;
 
             // Generate PDF output once
