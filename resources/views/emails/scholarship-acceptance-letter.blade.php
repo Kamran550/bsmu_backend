@@ -51,8 +51,8 @@
 
         <p>
             We very much look forward to welcoming you to WPU. If you have any questions, please contact us at
-            <a href="mailto:international@bsmu.edu.rs">international@bsmu.edu.rs</a> or <a
-                href="mailto:rectorate@bsmu.edu.rs">rectorate@bsmu.edu.rs</a>.
+            <a href="mailto:international@bsmu.org">international@bsmu.org</a> or <a
+                href="mailto:rectorate@bsmu.org">rectorate@bsmu.org</a>.
         </p>
 
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666;">
@@ -63,7 +63,7 @@
             </p>
             <p style="margin-top: 15px;">
                 Tel: +32 483 38 31 70<br>
-                Website: www.bsmu.edu.rs
+                Website: www.bsmu.org
             </p>
         </div>
     </div>

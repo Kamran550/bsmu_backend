@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'verify_domain' => env('VERIFY_DOMAIN', 'verify.bsmu.edu.rs'),
+    'verify_domain' => env('VERIFY_DOMAIN', 'verify.bsmu.org'),
 
     /*
     |--------------------------------------------------------------------------

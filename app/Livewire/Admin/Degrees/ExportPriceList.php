@@ -73,7 +73,7 @@ class ExportPriceList extends Component
             }
 
             // Generate QR code as SVG (no imagick extension required)
-            $qrCodeSvg = QrCode::format('svg')->size(100)->generate('https://bsmu.edu.rs/en/apply');
+            $qrCodeSvg = QrCode::format('svg')->size(100)->generate('https://bsmu.org/en/apply');
             $qrCode = base64_encode($qrCodeSvg);
 
             // Prepare translations

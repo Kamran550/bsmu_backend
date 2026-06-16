@@ -8,10 +8,10 @@ return [
     'allowed_origins' => [
         'http://localhost:3000',
         'http://127.0.0.1:3000',
-        'https://bsmu.edu.rs',
-        'https://admin.bsmu.edu.rs',
-        'https://teacher.bsmu.edu.rs',
-        'https://student.bsmu.edu.rs',
+        'https://bsmu.org',
+        'https://admin.bsmu.org',
+        'https://teacher.bsmu.org',
+        'https://student.bsmu.org',
     ],
 
     'allowed_origins_patterns' => [],

@@ -171,7 +171,7 @@
         @endif
 
         <div class="contact-info">
-            <strong>Email:</strong> international@bsmu.edu.rs<br>
+            <strong>Email:</strong> international@bsmu.org<br>
             <strong>Phone:</strong> +32 483 38 31 70<br>
             <strong>Date:</strong> {{ now()->format('d/m/Y') }}
         </div>

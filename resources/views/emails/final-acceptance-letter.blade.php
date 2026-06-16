@@ -23,7 +23,7 @@
             <h3 style="color: #2c3e50; margin-top: 0;">Student Portal Login Information</h3>
             <p style="margin-bottom: 10px;">
                 <strong>Portal address:</strong> 
-                <a href="https://student.bsmu.edu.rs" style="color: #007bff;">https://student.bsmu.edu.rs</a>
+                <a href="https://student.bsmu.org" style="color: #007bff;">https://student.bsmu.org</a>
             </p>
             <p style="margin-bottom: 10px;">
                 <strong>Username:</strong> {{ $user->username }}

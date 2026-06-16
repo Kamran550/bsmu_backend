@@ -653,7 +653,7 @@
             counted towards the preparatory
             class fee, and any remaining balance will be collected at the beginning of the academic year. For more
             information, please visit:
-            <strong>https://bsmu.edu.rs</strong>
+            <strong>https://bsmu.org</strong>
         </p>
     </div>
 
@@ -678,12 +678,12 @@
     <!-- Additional Information -->
     <div class="content">
         <p>
-            Please follow our website at <strong>www.bsmu.edu.rs</strong> for updates on registrations, academic
+            Please follow our website at <strong>www.bsmu.org</strong> for updates on registrations, academic
             calendar, and other developments.
         </p>
         <p>
             For inquiries regarding application, payment, registration, etc., please contact us at:
-            <strong>international@bsmu.edu.rs</strong>
+            <strong>international@bsmu.org</strong>
         </p>
     </div>
 
@@ -742,9 +742,9 @@
                 <td style="text-align: center; font-size: 11px; line-height: 1.1;">
                     <p style="margin: 5px 0;">
                         <strong>Tel:</strong> +32 483 38 31 70 |
-                        <strong>Email:</strong> international@bsmu.edu.rs |
+                        <strong>Email:</strong> international@bsmu.org |
                         <strong>Address:</strong> Belgrade, Serbia |
-                        <strong>Website:</strong> www.bsmu.edu.rs
+                        <strong>Website:</strong> www.bsmu.org
                     </p>
                 </td>
             </tr>

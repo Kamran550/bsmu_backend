@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
             'name'      => 'System',
             'surname'   => 'Administrators',
             'username'  => 'admin',          // daxil olmaq üçün
-            'email'     => 'admin@bsmu.edu.rs',
+            'email'     => 'admin@bsmu.org',
             'password'  => Hash::make('Qe7@Nf#rA92!ptXz'), // to change the password, send an email
             'phone'     => '0000000000',
             'role_id'   => $adminRoleId,

@@ -54,15 +54,15 @@
                 Contact Information:
             </h3>
             <p style="margin: 5px 0; font-size: 14px;">
-                <strong>Email:</strong> <a href="mailto:international@bsmu.edu.rs"
-                    style="color: #007bff; text-decoration: none;">international@bsmu.edu.rs</a>
+                <strong>Email:</strong> <a href="mailto:international@bsmu.org"
+                    style="color: #007bff; text-decoration: none;">international@bsmu.org</a>
             </p>
             <p style="margin: 5px 0; font-size: 14px;">
                 <strong>Phone:</strong> +32 483 38 31 70
             </p>
             <p style="margin: 5px 0; font-size: 14px;">
-                <strong>Web:</strong> <a href="https://www.bsmu.edu.rs"
-                    style="color: #007bff; text-decoration: none;">www.bsmu.edu.rs</a>
+                <strong>Web:</strong> <a href="https://www.bsmu.org"
+                    style="color: #007bff; text-decoration: none;">www.bsmu.org</a>
             </p>
         </div>
 

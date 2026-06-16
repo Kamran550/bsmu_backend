@@ -73,7 +73,7 @@ class StudentApplication extends Model
      */
     public function getVerificationUrl(?string $verificationCode = null): string
     {
-        $domain = config('app.verify_domain', 'verify.bsmu.edu.rs');
+        $domain = config('app.verify_domain', 'verify.bsmu.org');
         $url = "https://{$domain}";
 
         if ($verificationCode) {

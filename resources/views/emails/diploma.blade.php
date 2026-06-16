@@ -100,7 +100,7 @@
                 Belgrade, Serbia
             </p>
             <p style="margin: 10px 0 0 0;">
-                <a href="https://bsmu.edu.rs" style="color: #8B0000; text-decoration: none;">www.bsmu.edu.rs</a>
+                <a href="https://bsmu.org" style="color: #8B0000; text-decoration: none;">www.bsmu.org</a>
             </p>
         </div>
     </div>

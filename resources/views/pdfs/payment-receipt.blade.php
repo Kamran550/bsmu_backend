@@ -369,12 +369,12 @@
                         on {{ $payment->created_at->format('d/m/Y') }} with document number
                         <strong>{{ $verificationCode }}</strong>.
                         The validity of the document can be confirmed by scanning the QR code or by document number at
-                        <strong> {{ 'https://' . config('app.verify_domain', 'verify.bsmu.edu.rs') }} </strong>
+                        <strong> {{ 'https://' . config('app.verify_domain', 'verify.bsmu.org') }} </strong>
                     </div>
                 </td>
                 <td style="width: 70px; vertical-align: top;">
                     @php
-                        $verifyDomain = config('app.verify_domain', 'verify.bsmu.edu.rs');
+                        $verifyDomain = config('app.verify_domain', 'verify.bsmu.org');
                         $verificationUrl = 'https://' . $verifyDomain . '?verificationcode=' . $verificationCode;
                         $qrCodeSvg = \SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')
                             ->size(120)
@@ -395,8 +395,8 @@
                 <td class="footer-info" style="text-align: center;">
                     <p style="margin: 5px 0;">
                         <strong>Phone:</strong> +48 579 369 968 |
-                        <strong>Email:</strong> info@bsmu.edu.rs |
-                        <strong>Website:</strong> www.bsmu.edu.rs |
+                        <strong>Email:</strong> info@bsmu.org |
+                        <strong>Website:</strong> www.bsmu.org |
                         <strong>Address:</strong> 10000 Belgrade, Serbia
                     </p>
                 </td>

@@ -485,8 +485,8 @@
                         <strong>Tel:</strong> +90 505 621 26 26 | +32 483 38 31 70
                     </p>
                     <p style="margin: 4px 0; text-align: center;">
-                        <strong>e-mail:</strong> info@bsmu.edu.rs | rectorate@bsmu.edu.rs | <strong>Web:</strong>
-                        www.bsmu.edu.rs | www.bsmu.edu.rs
+                        <strong>e-mail:</strong> info@bsmu.org | rectorate@bsmu.org | <strong>Web:</strong>
+                        www.bsmu.org | www.bsmu.org
                     </p>
                 </td>
             </tr>

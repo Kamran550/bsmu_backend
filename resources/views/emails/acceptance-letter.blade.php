@@ -30,7 +30,7 @@
         </p>
 
         <p>
-            If you have any questions, please contact us at <a href="mailto:international@bsmu.edu.rs">international@bsmu.edu.rs</a>.
+            If you have any questions, please contact us at <a href="mailto:international@bsmu.org">international@bsmu.org</a>.
         </p>
 
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666;">

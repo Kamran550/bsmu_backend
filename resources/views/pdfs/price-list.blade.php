@@ -280,7 +280,7 @@
     <!-- Footer -->
     <div class="footer">
         {{ $translations['for_more_info'] }}<br>
-        <a href="https://bsmu.edu.rs">www.bsmu.edu.rs</a>
+        <a href="https://bsmu.org">www.bsmu.org</a>
     </div>
 </body>
 
