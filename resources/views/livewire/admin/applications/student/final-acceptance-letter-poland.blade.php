@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zaświadczenie studenckie - {{ $student->first_name }} {{ $student->last_name }}</title>
+    <title>Öğrenci Belgesi - {{ $student->first_name }} {{ $student->last_name }}</title>
     <style>
         @page {
             margin: 8mm 10mm 8mm 10mm;
@@ -534,7 +534,7 @@
                 <tr>
                     <td class="label-col">Gender / Cinsiyet</td>
                     <td class="value-col">
-                        {{ $student->gender ? (strtolower($student->gender) === 'male' ? 'Mężczyzna / Male' : (strtolower($student->gender) === 'female' ? 'Kobieta / Female' : ucfirst($student->gender))) : 'N/A' }}
+                        {{ $student->gender ? (strtolower($student->gender) === 'male' ? 'Male / Erkek' : (strtolower($student->gender) === 'female' ? 'Female / Kadın' : ucfirst($student->gender))) : 'N/A' }}
                     </td>
                 </tr>
                 <tr>
@@ -562,11 +562,11 @@
                 </tr>
                 <tr>
                     <td class="label-col">Education type / Eğitim Tipi</td>
-                    <td class="value-col">{{ $educationTypePl }} / {{ $educationTypeEn }}</td>
+                    <td class="value-col">{{ $educationTypeEn }} / {{ $educationTypePl }}</td>
                 </tr>
                 <tr>
                     <td class="label-col">Scholarship status / Bursluluk Statüsü</td>
-                    <td class="value-col">{{ $scholarshipPl }} / {{ $scholarshipEn }}</td>
+                    <td class="value-col">{{ $scholarshipEn }} / {{ $scholarshipPl }}</td>
                 </tr>
                 <tr>
                     <td class="label-col">Medium of instruction / Eğitim Dili</td>
@@ -615,7 +615,7 @@
                 </div>
             @else
                 <div class="photo-frame">
-                    <div class="photo-placeholder">Photo yok / No Photo</div>
+                    <div class="photo-placeholder">No Photo / Photo yok</div>
                 </div>
             @endif
         </div>
@@ -715,8 +715,7 @@ Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
         </div>
         <div class="bottom-divider"></div>
         <div class="address-block">
-            <p>Aleja Józefa Piłsudskiego 35, 09-407 Płock / Poland [ BSMU ]</p>
-            <p style="margin-top: 3px;"><strong>Tel:</strong>+90 505 621 26 26</p>
+            <p style="margin-top: 3px;"><strong>Tel:</strong>+90 505 621 26 26 | +32 483 38 31 70</p>
             <p><strong>e-mail:</strong> info@bsmu.org | rectorate@bsmu.org | <strong>Web:</strong> www.bsmu.org
             </p>
         </div>
