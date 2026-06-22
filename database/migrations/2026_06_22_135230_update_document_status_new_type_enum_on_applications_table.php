@@ -28,8 +28,19 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
+
     public function down(): void
     {
-        //
+        DB::statement("
+        ALTER TABLE applications
+        MODIFY document_status ENUM(
+            'acceptance_letter',
+            'certificate_english',
+            'certificate_turkish',
+            'diploma',
+            'transfer_english',
+            'transfer_turkish'
+        ) NULL
+    ");
     }
 };

@@ -36,7 +36,6 @@ class Application extends Model
 
     protected $casts = [
         'status' => ApplicationStatusEnum::class,
-        'document_status' => DocumentStatusEnum::class,
         'submitted_at' => 'datetime',
         'reviewed_at' => 'datetime',
     ];
