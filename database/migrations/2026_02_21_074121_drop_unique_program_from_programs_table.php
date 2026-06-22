@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('programs', function (Blueprint $table) {
-            $table->dropForeign(['degree_id']);
-            $table->dropForeign(['faculty_id']);
+        // Schema::table('programs', function (Blueprint $table) {
+        //     $table->dropForeign(['degree_id']);
+        //     $table->dropForeign(['faculty_id']);
 
-            $table->dropUnique('unique_program');
-        });
+        //     $table->dropUnique('unique_program');
+        // });
     }
 
     /**
