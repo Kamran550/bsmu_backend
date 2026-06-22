@@ -10,6 +10,7 @@ enum DocumentStatusEnum: string
     case DIPLOMA_LETTER = 'diploma';
     case TRANSFER_ENGLISH_LETTER = 'transfer_english';
     case TRANSFER_TURKISH_LETTER = 'transfer_turkish';
+    case CERTIFICATE_ENGLISH_TURKISH_LETTER = 'certificate_english_turkish';
 
     public static function values(): array
     {
