@@ -628,7 +628,7 @@
 
         @php
             $duration = $degree?->duration ?? 4;
-            $durationPl = $duration === 1 ? 'rok' : ($duration <p 5 ? 'lata' : 'lat');
+            $durationPl = $duration === 1 ? 'rok' : ($duration < 5 ? 'lata' : 'lat');
         @endphp
         <p class="en">* The foreseen duration of education for the programme is {{ $degree?->duration ?? 4 }}
             years.</p>
