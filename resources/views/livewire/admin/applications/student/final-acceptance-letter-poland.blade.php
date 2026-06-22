@@ -467,10 +467,10 @@
                 </td>
                 <td class="title-cell">
                     <div class="university-name">
-                        MAZOVIA UNIVERSITY of SCIENCE and TECHNOLOGY
+                        BALKAN SCIENCE AND MANAGEMENT UNIVERSITY
                     </div>
                     <div class="department-name">
-                        Wydział Spraw Studenckich / Student Affairs Department
+                        Öğrenci İşleri Departmanı / Student Affairs Department
                     </div>
                 </td>
                 <td class="date-barcode-cell">
