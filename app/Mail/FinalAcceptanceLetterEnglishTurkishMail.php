@@ -41,7 +41,7 @@ class FinalAcceptanceLetterEnglishTurkishMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Zaświadczenie studenckie / Student Certificate - ' . $this->student->first_name . ' ' . $this->student->last_name,
+            subject: 'Öğrenci Belgesi / Student Certificate - ' . $this->student->first_name . ' ' . $this->student->last_name,
         );
     }
 

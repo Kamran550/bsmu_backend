@@ -578,7 +578,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-col">Rok akademicki / Academic year</td>
+                    <td class="label-col">Academic year / Akademik yıl</td>
                     <td class="value-col">{{ $academicYearPl }} / {{ $academicYearEn }}</td>
                 </tr>
                 <tr>
@@ -628,7 +628,7 @@
 
         @php
             $duration = $degree?->duration ?? 4;
-            $durationPl = $duration === 1 ? 'rok' : ($duration < 5 ? 'lata' : 'lat');
+            $durationPl = $duration === 1 ? 'yıl' : ($duration < 5 ? 'lata' : 'lat');
         @endphp
         <p class="en">* The foreseen duration of education for the programme is {{ $degree?->duration ?? 4 }}
             years.</p>
