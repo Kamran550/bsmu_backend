@@ -416,24 +416,24 @@
         $placeOfBirthDisplay = nationality_to_polish($student->place_of_birth ?? $student->nationality);
 
         $educationTypeEn = 'Full time';
-        $educationTypePl = 'Studia stacjonarne';
+        $educationTypePl = 'Tam zamanlı öğrenim';
 
         $classYear = $student->current_course ?? 1;
         $classEn = "Lesson stage ({$classYear}st year)";
-        $classPl = "Etap zajęć ({$classYear}. rok studiów)";
+        $classPl = "Ders Aşaması ({$classYear}. öğrenim yılı)";
 
         $scholarshipStatus = $student->scholarship_status ?? '75%';
         $scholarshipEn = "{$scholarshipStatus} Scholarship";
-        $scholarshipPl = '%50 Stypendium';
+        $scholarshipPl = '%50 Burs';
 
         if (str_contains($scholarshipStatus, '100')) {
-            $scholarshipPl = '100% Stypendium';
+            $scholarshipPl = '100% Burs';
         } elseif (str_contains($scholarshipStatus, '75')) {
-            $scholarshipPl = '%75 Stypendium';
+            $scholarshipPl = '%75 Burs';
         } elseif (str_contains($scholarshipStatus, '50')) {
-            $scholarshipPl = '%50 Stypendium';
+            $scholarshipPl = '%50 Burs';
         } else {
-            $scholarshipPl = $scholarshipStatus . ' Stypendium';
+            $scholarshipPl = $scholarshipStatus . ' Burs';
         }
 
         $startYear = $student->graduation_year ?? now()->year;
@@ -448,7 +448,7 @@
     <!-- Header -->
     <div class="header-wrapper">
         <div class="ref-number">
-            Numer referencyjny / Reference No:
+            Referans Numarası / Reference No:
             {{ $student->application_number ?? now()->format('d/m/Y') }}/{{ str_pad($student->id, 3, '0', STR_PAD_LEFT) }}
             {{ now()->format('d/m/Y') }}
 
