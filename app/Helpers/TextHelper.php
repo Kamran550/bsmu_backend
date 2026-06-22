@@ -90,3 +90,53 @@ function course_to_word_english(?int $course): string
 //         return $degrees[$degreeName] ?? $degreeName;
 //     }
 // }
+
+
+if (!function_exists('language_to_polish')) {
+    /**
+     * Return language in Polish and English format: "Polish / English"
+     */
+    function language_to_polish(?string $language): string
+    {
+        if (empty($language)) {
+            return 'N/A';
+        }
+        $map = [
+            'Afrikaans' => 'Afrikaans', 'Albanian' => 'Albański', 'Amharic' => 'Amharski',
+            'Arabic' => 'Arabski', 'Armenian' => 'Ormiański', 'Azerbaijani' => 'Azerbejdżański',
+            'Basque' => 'Baskijski', 'Belarusian' => 'Białoruski', 'Bengali' => 'Bengalski',
+            'Bosnian' => 'Bośniacki', 'Bulgarian' => 'Bułgarski', 'Burmese' => 'Birmański',
+            'Catalan' => 'Kataloński', 'Cebuano' => 'Cebuański', 'Chinese (Mandarin)' => 'Chiński (mandaryński)',
+            'Chinese (Cantonese)' => 'Chiński (kantoński)', 'Croatian' => 'Chorwacki', 'Czech' => 'Czeski',
+            'Danish' => 'Duński', 'Dutch' => 'Niderlandzki', 'English' => 'Angielski',
+            'Estonian' => 'Estoński', 'Filipino' => 'Filipiński', 'Finnish' => 'Fiński',
+            'French' => 'Francuski', 'Galician' => 'Galicyjski', 'Georgian' => 'Gruziński',
+            'German' => 'Niemiecki', 'Greek' => 'Grecki', 'Gujarati' => 'Gudżarati',
+            'Hebrew' => 'Hebrajski', 'Hindi' => 'Hinduski', 'Hungarian' => 'Węgierski',
+            'Icelandic' => 'Islandzki', 'Indonesian' => 'Indonezyjski', 'Irish' => 'Irlandzki',
+            'Italian' => 'Włoski', 'Japanese' => 'Japoński', 'Javanese' => 'Jawajski',
+            'Kannada' => 'Kannada', 'Kazakh' => 'Kazachski', 'Khmer' => 'Khmerski',
+            'Korean' => 'Koreański', 'Kurdish' => 'Kurdyjski', 'Lao' => 'Laotański',
+            'Latvian' => 'Łotewski', 'Lithuanian' => 'Litewski', 'Macedonian' => 'Macedoński',
+            'Malay' => 'Malajski', 'Malayalam' => 'Malajalam', 'Maltese' => 'Maltański',
+            'Marathi' => 'Marathi', 'Mongolian' => 'Mongolski', 'Nepali' => 'Nepalski',
+            'Norwegian' => 'Norweski', 'Pashto' => 'Paszto', 'Persian (Farsi)' => 'Perski (Farsi)',
+            'Polish' => 'Polski', 'Portuguese' => 'Portugalski', 'Punjabi' => 'Pendżabski',
+            'Romanian' => 'Rumuński', 'Russian' => 'Rosyjski', 'Serbian' => 'Serbski',
+            'Sinhala' => 'Syngaleski', 'Slovak' => 'Słowacki', 'Slovenian' => 'Słoweński',
+            'Somali' => 'Somalijski', 'Spanish' => 'Hiszpański', 'Swahili' => 'Suahili',
+            'Swedish' => 'Szwedzki', 'Tagalog' => 'Tagalski', 'Tamil' => 'Tamilski',
+            'Telugu' => 'Telugu', 'Thai' => 'Tajski', 'Turkish' => 'Turecki',
+            'Ukrainian' => 'Ukraiński', 'Urdu' => 'Urdu', 'Uzbek' => 'Uzbecki',
+            'Vietnamese' => 'Wietnamski', 'Welsh' => 'Walijski', 'Yoruba' => 'Joruba',
+            'Zulu' => 'Zulu',
+        ];
+        $trimmed = trim($language);
+        $pl = $map[$trimmed] ?? null;
+        if ($pl) {
+            return $pl . ' / ' . $trimmed;
+        }
+        return $trimmed;
+    }
+}
+

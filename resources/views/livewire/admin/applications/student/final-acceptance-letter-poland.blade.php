@@ -439,12 +439,12 @@
         $startYear = $student->graduation_year ?? now()->year;
         $endYear = $startYear + 1;
         $academicYearEn = "{$startYear}-{$endYear} academic year";
-        $academicYearPl = "Rok akademicki {$startYear}-{$endYear}";
+        $academicYearPl = "Akademik yıl {$startYear}-{$endYear}";
     @endphp
 
     <!-- Top Accent Line -->
     <div class="header-top-accent"></div>
-{{ now()->format('d/m/Y') }}
+    {{ now()->format('d/m/Y') }}
     <!-- Header -->
     <div class="header-wrapper">
         <div class="ref-number">
@@ -480,9 +480,14 @@
                             'BSMU-' . $student->id . '-' . now()->format('Ymd');
                         $barcodeBase64 = '';
                         try {
-                $barcodePng = (new \Picqer\Barcode\BarcodeGeneratorPNG())
-                    ->getBarcode($barcodeCode, \Picqer\Barcode\BarcodeGenerator::TYPE_CODE_128, 1, 22, [26, 39, 68]);
-                $barcodeBase64 = base64_encode($barcodePng);
+                            $barcodePng = new \Picqer\Barcode\BarcodeGeneratorPNG()->getBarcode(
+                                $barcodeCode,
+                                \Picqer\Barcode\BarcodeGenerator::TYPE_CODE_128,
+                                1,
+                                22,
+                                [26, 39, 68],
+                            );
+                            $barcodeBase64 = base64_encode($barcodePng);
                         } catch (\Throwable $e) {
                             // fallback - barcode hidden
                         }
@@ -494,7 +499,7 @@
                         </div>
                     @endif
                     <div class="date-text">{{ now()->format('d/m/Y') }}
-</div>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -502,7 +507,7 @@
 
     <!-- Document Title (Bilingual) -->
     <div class="document-title">
-        <h1>ZAŚWIADCZENIE STUDENCKIE | DOCUMENTATION OF STUDENT STATUS</h1>
+        <h1>DOCUMENTATION OF STUDENT STATUS | ÖĞRENCİ BELGESİ</h1>
     </div>
 
     <!-- Student Information (Bilingual: PL / EN) -->
@@ -510,41 +515,41 @@
         <div class="info-cell">
             <table class="info-table">
                 <tr>
-                    <td class="label-col">Numer dokumentu tożsamości / ID card number</td>
+                    <td class="label-col">ID card number / Pasaport No </td>
                     <td class="value-col">{{ $student->passport_number ?? ($student->student_number ?? 'N/A') }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Imię i nazwisko / Name - surname</td>
+                    <td class="label-col">Name - surname / Ad - Soyadı</td>
                     <td class="value-col">{{ strtoupper($student->first_name) }} {{ strtoupper($student->last_name) }}
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-col">Imię ojca / Father name</td>
+                    <td class="label-col">Father name / Baba Adı</td>
                     <td class="value-col">{{ strtoupper($student->father_name ?? 'N/A') }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Obywatelstwo / Nationality</td>
+                    <td class="label-col">Nationality / Uyruk</td>
                     <td class="value-col">{{ $nationalityDisplay }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Płeć / Gender</td>
+                    <td class="label-col">Gender / Cinsiyet</td>
                     <td class="value-col">
                         {{ $student->gender ? (strtolower($student->gender) === 'male' ? 'Mężczyzna / Male' : (strtolower($student->gender) === 'female' ? 'Kobieta / Female' : ucfirst($student->gender))) : 'N/A' }}
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-col">Data urodzenia / Date of birth</td>
+                    <td class="label-col">Date of birth / Doğum tarihi</td>
                     <td class="value-col">
                         {{ $student->date_of_birth ? $student->date_of_birth->format('d.m.Y') : 'N/A' }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Miejsce urodzenia / Place of birth</td>
+                    <td class="label-col">Place of birth / Doğum yeri</td>
                     <td class="value-col">{{ $placeOfBirthDisplay }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Jednostka akademicka / Academic unit</td>
-                    <td class="value-col">Instytut Studiów Podyplomowych (Międzynarodowy) / Institute of Graduate
-                        Education (Multinational)</td>
+                    <td class="label-col">Academic unit / Akademik birim</td>
+                    <td class="value-col">Institute of Graduate
+                        Education (Multinational) / Lisansüstü Eğitim Enstitüsü (Çokuluslu)</td>
                 </tr>
                 <tr>
                     <td class="label-col">Program / Program</td>
@@ -552,33 +557,33 @@
                         {{ $degreeNameEn }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Rok studiów / Class</td>
+                    <td class="label-col">Class / Sınıf</td>
                     <td class="value-col">{{ $classPl }} / {{ $classEn }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Typ edukacji / Education type</td>
+                    <td class="label-col">Education type / Eğitim Tipi</td>
                     <td class="value-col">{{ $educationTypePl }} / {{ $educationTypeEn }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Status stypendium / Scholarship status</td>
+                    <td class="label-col">Scholarship status / Bursluluk Statüsü</td>
                     <td class="value-col">{{ $scholarshipPl }} / {{ $scholarshipEn }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Język nauczania / Medium of instruction</td>
+                    <td class="label-col">Medium of instruction / Eğitim Dili</td>
                     <td class="value-col">{{ $studyLangDisplay }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Data rejestracji / Registration date</td>
+                    <td class="label-col">Registration date / Kayıt Tarihi</td>
                     <td class="value-col">{{ now()->format('d/m/Y') }}
-</td>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label-col">Rok akademicki / Academic year</td>
                     <td class="value-col">{{ $academicYearPl }} / {{ $academicYearEn }}</td>
                 </tr>
                 <tr>
-                    <td class="label-col">Status studenta / Current status</td>
-                    <td class="value-col">Aktywny student / Active student</td>
+                    <td class="label-col">Current status / Mevcut durum</td>
+                    <td class="value-col">Active student / Aktif öğrenci</td>
                 </tr>
             </table>
         </div>
@@ -610,7 +615,7 @@
                 </div>
             @else
                 <div class="photo-frame">
-                    <div class="photo-placeholder">Brak zdjęcia / No Photo</div>
+                    <div class="photo-placeholder">Photo yok / No Photo</div>
                 </div>
             @endif
         </div>
@@ -618,33 +623,36 @@
 
     <!-- Body Text (Bilingual) -->
     <div class="body-text">
-        <p class="pl">* Osoba, której dane identyfikacyjne podano powyżej, jest naszym studentem.</p>
         <p class="en">* The person whose identity information is given above is our student.</p>
+        <p class="pl">* Yukarıda kimlik bilgileri verilen kişi öğrencimizdir.</p>
 
         @php
             $duration = $degree?->duration ?? 4;
-            $durationPl = $duration === 1 ? 'rok' : ($duration < 5 ? 'lata' : 'lat');
+            $durationPl = $duration === 1 ? 'rok' : ($duration <p 5 ? 'lata' : 'lat');
         @endphp
-        <p class="pl">* Przewidywany czas trwania programu wynosi {{ $duration }} {{ $durationPl }}.</p>
         <p class="en">* The foreseen duration of education for the programme is {{ $degree?->duration ?? 4 }}
             years.</p>
+        <p class="pl">* Programın öngörülen eğitim süresi {{ $duration }} {{ $durationPl }} yıl.</p>
 
-        <p class="pl">* Zgodnie z odpowiednimi artykułami Regulaminu Studiów Podyplomowych i Egzaminów BSMU, osoby
-            zapisane na program muszą w pełni przestrzegać wymagań dotyczących obecności, uczestnictwa i egzaminów na
-            zajęciach, aby korzystać z praw studenta. W przeciwnym razie ich rejestracja w programie zostanie anulowana.
-        </p>
-        <p class="en">* In accordance with the relevant articles of the BSMU Graduate Education and Examination
+         <p class="en">* In accordance with the relevant articles of the BSMU Graduate Education and Examination
             Directive, individuals enrolled in the program must fully comply with the attendance, participation, and
             examination requirements for courses in order to benefit from student rights. Otherwise, the individual's
             enrolment in the program shall be terminated.</p>
+        <p class="pl">* BSMU Lisansüstü Eğitim ve Sınav Yönergesi'nin ilgili maddelerine uygun olarak,
 
-        <p class="pl">* Oczekuje się, że zainteresowana osoba osiągnie etap ukończenia studiów w roku akademickim
-            {{ $startYear }}-{{ $endYear }}.</p>
-        <p class="en">* It is expected that the interested person will reach the graduation stage in the
+programa kayıtlı bireylerin öğrenci haklarından yararlanabilmeleri için derslere katılım, devam ve sınav şartlarına tam olarak uymaları gerekmektedir.
+Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
+        </p>
+       
+  <p class="en">* It is expected that the interested person will reach the graduation stage in the
             {{ $startYear }}-{{ $endYear }} academic year.</p>
 
-        <p class="pl">* Niniejszy dokument został sporządzony na prośbę zainteresowanej osoby.</p>
-        <p class="en">* This document has been issued upon the request of the person concerned.</p>
+        <p class="pl">* İlgilenen kişinin mezuniyet aşamasına ulaşması beklenmektedir.
+            {{ $startYear }}-{{ $endYear }}.</p>
+      
+
+            <p class="en">* This document has been issued upon the request of the person concerned.</p>
+        <p class="pl">* Bu belge, ilgili kişinin talebi üzerine düzenlenmiştir..</p>
     </div>
 
     <!-- Signature + Stamp -->
@@ -659,7 +667,7 @@
                     <img class="sig-stamp-overlay" src="data:image/png;base64,{{ $stampData }}" alt="BSMU Stamp">
                 @endif
                 <div class="sig-name">Prof. Dr. hab. Tomasz Żelazowski-Krępski</div>
-                <div class="sig-title">Rektor / Rector</div>
+                <div class="sig-title">Rector / Rektör</div>
             </td>
         </tr>
     </table>
@@ -667,12 +675,12 @@
     <!-- Verification Footer -->
     <div class="verification-footer">
         <div class="verification-date">
-            Data / Date: {{ now()->format('d/m/Y') }}
+            Date / Tarih: {{ now()->format('d/m/Y') }}
 
         </div>
         <div class="verification-card">
             <div class="verification-card-header">
-                Weryfikacja dokumentu / Document Verification
+               Document Verification / Belge Doğrulama
             </div>
             <table class="verification-card-body">
                 <tr>
@@ -687,19 +695,20 @@
                         <img src="data:image/svg+xml;base64,{{ $qrCodeBase64 }}" style="width: 56px; height: 56px;" />
                     </td>
                     <td class="verification-info-cell">
-                        <span class="pl">Niniejszy dokument został podpisany elektronicznie dnia
-                            {{ now()->format('d/m/Y') }} na nazwisko
-                            <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> z
-                            numerem dokumentu <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>.
-                            Ważność dokumentu można potwierdzić skanując kod QR lub za pomocą numeru dokumentu pod
-                            adresem <strong>{{ $student->getVerificationUrl() }}</strong></span>
-                        <br><br>
                         <span class="en">This document was e-signed for
                             <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> on
                             {{ now()->format('d/m/Y') }} with document number
                             <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>. The validity of
                             the document can be confirmed by scanning the QR code or by document number at
                             <strong>{{ $student->getVerificationUrl() }}</strong></span>
+                              <br><br>
+                            <span class="pl">Bu belge
+                            {{ now()->format('d/m/Y') }} tarihinde
+                            <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> 
+                             <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>.
+                            belge numarasıyla elektronik olarak imzalanmıştır. Belgenin geçerliliği, QR kodunu tarayarak
+                        veya belge numarasını kullanarak <strong>{{ $student->getVerificationUrl() }} adresinden doğrulanabilir</strong></span>
+
                     </td>
                 </tr>
             </table>
