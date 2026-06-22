@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Enums\ApplicationStatusEnum;
+use App\Enums\DocumentStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 class Application extends Model
@@ -35,6 +36,7 @@ class Application extends Model
 
     protected $casts = [
         'status' => ApplicationStatusEnum::class,
+        'document_status' => DocumentStatusEnum::class,
         'submitted_at' => 'datetime',
         'reviewed_at' => 'datetime',
     ];
