@@ -558,7 +558,7 @@
                 </tr>
                 <tr>
                     <td class="label-col">Class / Sınıf</td>
-                    <td class="value-col">{{ $classPl }} / {{ $classEn }}</td>
+                    <td class="value-col">{{ $classEn }} / {{ $classPl }}</td>
                 </tr>
                 <tr>
                     <td class="label-col">Education type / Eğitim Tipi</td>
@@ -666,7 +666,7 @@ Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
                 @if ($stampData)
                     <img class="sig-stamp-overlay" src="data:image/png;base64,{{ $stampData }}" alt="BSMU Stamp">
                 @endif
-                <div class="sig-name">Prof. Dr. hab. Tomasz Żelazowski-Krępski</div>
+                <div class="sig-name">Prof. Dr. Eraytun KORALMAZ</div>
                 <div class="sig-title">Rector / Rektör</div>
             </td>
         </tr>
