@@ -489,6 +489,7 @@
                             );
                             $barcodeBase64 = base64_encode($barcodePng);
                         } catch (\Throwable $e) {
+                            \Log::error('Barcode error: ' . $e->getMessage());
                             // fallback - barcode hidden
                         }
                     @endphp
