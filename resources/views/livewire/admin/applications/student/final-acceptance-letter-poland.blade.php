@@ -580,7 +580,7 @@
                 </tr>
                 <tr>
                     <td class="label-col">Academic year / Akademik yıl</td>
-                    <td class="value-col">{{ $academicYearPl }} / {{ $academicYearEn }}</td>
+                    <td class="value-col">{{ $academicYearEn }} / {{ $academicYearPl }}</td>
                 </tr>
                 <tr>
                     <td class="label-col">Current status / Mevcut durum</td>
