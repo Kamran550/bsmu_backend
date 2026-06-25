@@ -396,8 +396,6 @@
         $degree = $program?->degree;
         $faculty = $program?->faculty;
 
-        \\Log::info('degree name en budur:',['deg en budur:',$degree?->name]);
-        \\Log::info('degree name en budur2:',['deg en budur:',$degree?->getName("EN")]);
         $programNameEn = $program?->getName('EN') ?: $program?->name ?? 'N/A';
         $programNamePl = $program?->getName('PL') ?: $programNameEn;
         $degreeNameEn = $degree?->getName('EN') ?: $degree?->name ?? 'N/A';
