@@ -550,8 +550,8 @@
                 </tr>
                 <tr>
                     <td class="label-col">Academic unit / Akademik birim</td>
-                    <td class="value-col">Institute of {{$degreeNameEn}}
-                        Education (Multinational) / {{$degreeNameTr}} Eğitim Enstitüsü (Çokuluslu)</td>
+                    <td class="value-col">{{ $degreeNameEn }}
+                        Degree Program / {{ $degreeNameTr }} Programı</td>
                 </tr>
                 <tr>
                     <td class="label-col">Program / Program</td>
@@ -636,24 +636,25 @@
             years.</p>
         <p class="pl">* Programın öngörülen eğitim süresi {{ $duration }} {{ $durationPl }} yıl.</p>
 
-         <p class="en">* In accordance with the relevant articles of the BSMU Graduate Education and Examination
+        <p class="en">* In accordance with the relevant articles of the BSMU Graduate Education and Examination
             Directive, individuals enrolled in the program must fully comply with the attendance, participation, and
             examination requirements for courses in order to benefit from student rights. Otherwise, the individual's
             enrolment in the program shall be terminated.</p>
         <p class="pl">* BSMU Lisansüstü Eğitim ve Sınav Yönergesi'nin ilgili maddelerine uygun olarak,
 
-programa kayıtlı bireylerin öğrenci haklarından yararlanabilmeleri için derslere katılım, devam ve sınav şartlarına tam olarak uymaları gerekmektedir.
-Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
+            programa kayıtlı bireylerin öğrenci haklarından yararlanabilmeleri için derslere katılım, devam ve sınav
+            şartlarına tam olarak uymaları gerekmektedir.
+            Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
         </p>
-       
-  <p class="en">* It is expected that the interested person will reach the graduation stage in the
+
+        <p class="en">* It is expected that the interested person will reach the graduation stage in the
             {{ $startYear }}-{{ $endYear }} academic year.</p>
 
         <p class="pl">* İlgilenen kişinin mezuniyet aşamasına ulaşması beklenmektedir.
             {{ $startYear }}-{{ $endYear }}.</p>
-      
 
-            <p class="en">* This document has been issued upon the request of the person concerned.</p>
+
+        <p class="en">* This document has been issued upon the request of the person concerned.</p>
         <p class="pl">* Bu belge, ilgili kişinin talebi üzerine düzenlenmiştir..</p>
     </div>
 
@@ -682,7 +683,7 @@ Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
         </div>
         <div class="verification-card">
             <div class="verification-card-header">
-               Document Verification / Belge Doğrulama
+                Document Verification / Belge Doğrulama
             </div>
             <table class="verification-card-body">
                 <tr>
@@ -703,13 +704,14 @@ Aksi takdirde, bireyin programa kaydı sona erdirilecektir.
                             <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>. The validity of
                             the document can be confirmed by scanning the QR code or by document number at
                             <strong>{{ $student->getVerificationUrl() }}</strong></span>
-                              <br><br>
-                            <span class="pl">Bu belge
+                        <br><br>
+                        <span class="pl">Bu belge
                             {{ now()->format('d/m/Y') }} tarihinde
-                            <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong> 
-                             <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>.
+                            <strong>{{ strtoupper($student->first_name . ' ' . $student->last_name) }}</strong>
+                            <strong>{{ $verificationCode ?? strtoupper(Str::random(12)) }}</strong>.
                             belge numarasıyla elektronik olarak imzalanmıştır. Belgenin geçerliliği, QR kodunu tarayarak
-                        veya belge numarasını kullanarak <strong>{{ $student->getVerificationUrl() }} adresinden doğrulanabilir</strong></span>
+                            veya belge numarasını kullanarak <strong>{{ $student->getVerificationUrl() }} adresinden
+                                doğrulanabilir</strong></span>
 
                     </td>
                 </tr>
