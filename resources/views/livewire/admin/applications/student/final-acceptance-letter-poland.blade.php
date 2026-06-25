@@ -396,9 +396,12 @@
         $degree = $program?->degree;
         $faculty = $program?->faculty;
 
+        \\Log::info('degree name en budur:',['deg en budur:',$degree?->name]);
+        \\Log::info('degree name en budur2:',['deg en budur:',$degree?->getName("EN")]);
         $programNameEn = $program?->getName('EN') ?: $program?->name ?? 'N/A';
         $programNamePl = $program?->getName('PL') ?: $programNameEn;
         $degreeNameEn = $degree?->getName('EN') ?: $degree?->name ?? 'N/A';
+        $degreeNameTr = $degree?->getName('TR') ?: $degree?->name ?? 'N/A';
         $degreeNamePl = $degree?->getName('PL') ?: $degreeNameEn;
         $facultyNameEn = $faculty?->getName('EN') ?: $faculty?->name ?? 'Institute of Graduate Education';
         $facultyNamePl = $faculty?->getName('PL') ?: $facultyNameEn;
@@ -549,8 +552,8 @@
                 </tr>
                 <tr>
                     <td class="label-col">Academic unit / Akademik birim</td>
-                    <td class="value-col">Institute of Graduate
-                        Education (Multinational) / Lisansüstü Eğitim Enstitüsü (Çokuluslu)</td>
+                    <td class="value-col">Institute of {{$degreeNameEn}}
+                        Education (Multinational) / {{$degreeNameTr}} Eğitim Enstitüsü (Çokuluslu)</td>
                 </tr>
                 <tr>
                     <td class="label-col">Program / Program</td>
