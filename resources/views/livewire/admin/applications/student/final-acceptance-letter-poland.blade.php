@@ -580,7 +580,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="label-col">Academic year / Akademik yıl</td>
+                    <td class="label-col">Expected Graduation / Beklenen Mezuniyet Yılı</td>
                     <td class="value-col">{{ $academicYearEn }} / {{ $academicYearPl }}</td>
                 </tr>
                 <tr>
