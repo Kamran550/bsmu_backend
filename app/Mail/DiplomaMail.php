@@ -82,6 +82,7 @@ class DiplomaMail extends Mailable
             Log::info('Diploma PDF generasiyası başladı', [
                 'student_id' => $this->student->id,
                 'application_id' => $this->application->id,
+                'dip text' => $this->studentApplication->diploma_text,
             ]);
 
             // Ensure relationships are loaded
