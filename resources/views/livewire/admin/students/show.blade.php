@@ -74,7 +74,9 @@
                 <!-- Profile Photo -->
                 <div class="shrink-0">
                     @if ($student->profile_photo)
-                        <img src="{{ Storage::url($student->profile_photo) }}" alt="{{ $student->name }}"
+                        {{-- <img src="{{ Storage::url($student->profile_photo) }}" alt="{{ $student->name }}"
+                            class="h-24 w-24 rounded-full object-cover border-4 border-indigo-100"> --}}
+                        <img src="{{ $student->profile_photo_url }}" alt="{{ $student->name }}"
                             class="h-24 w-24 rounded-full object-cover border-4 border-indigo-100">
                     @else
                         <div

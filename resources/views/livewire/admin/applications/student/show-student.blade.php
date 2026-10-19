@@ -85,10 +85,12 @@
         [
             'label' => 'Identity Card / Passport',
             'path' => $student->photo_id_path,
+            'type' => 'photo_id',
         ],
         [
             'label' => 'Profile Picture',
             'path' => $student->profile_photo_path,
+            'type' => 'profile_photo',
         ],
     ];
 
@@ -98,48 +100,58 @@
         $documents[] = [
             'label' => 'High School Diploma',
             'path' => $student->high_school_diploma_path,
+            'type' => 'high_school_diploma',
         ];
         $documents[] = [
             'label' => 'High School Transcript',
             'path' => $student->high_school_transcript_path,
+            'type' => 'high_school_transcript',
         ];
     } elseif ($degreeName === "Master's") {
         // Master applicants provide bachelor documents
         $documents[] = [
             'label' => "Bachelor's Diploma",
             'path' => $student->bachelor_diploma_path,
+            'type' => 'bachelor_diploma',
         ];
         $documents[] = [
             'label' => "Bachelor's Transcript",
             'path' => $student->bachelor_transcript_path,
+            'type' => 'bachelor_transcript',
         ];
     } elseif ($degreeName === "Master's (Without Thesis)") {
         // Master applicants provide bachelor documents
         $documents[] = [
             'label' => "Bachelor's Diploma",
             'path' => $student->bachelor_diploma_path,
+            'type' => 'bachelor_diploma',
         ];
         $documents[] = [
             'label' => "Bachelor's Transcript",
             'path' => $student->bachelor_transcript_path,
+            'type' => 'bachelor_transcript',
         ];
     } elseif ($degreeName === 'PhD') {
         // PhD applicants provide BOTH bachelor and master documents
         $documents[] = [
             'label' => "Bachelor's Diploma",
             'path' => $student->bachelor_diploma_path,
+            'type' => 'master_diploma',
         ];
         $documents[] = [
             'label' => "Bachelor's Transcript",
             'path' => $student->bachelor_transcript_path,
+            'type' => 'bachelor_transcript',
         ];
         $documents[] = [
             'label' => "Master's Diploma",
             'path' => $student->master_diploma_path,
+            'type' => 'master_diploma',
         ];
         $documents[] = [
             'label' => "Master's Transcript",
             'path' => $student->master_transcript_path,
+            'type' => 'master_transcript',
         ];
     }
 
@@ -385,7 +397,7 @@
                     <span wire:loading.remove wire:target="sendFinalAcceptanceLetterTurkish">Certificate (TR)</span>
                     <span wire:loading wire:target="sendFinalAcceptanceLetterTurkish">Sending...</span>
                 </button>
-                                <button type="button" wire:click="sendFinalAcceptanceLetterPoland" wire:loading.attr="disabled"
+                <button type="button" wire:click="sendFinalAcceptanceLetterPoland" wire:loading.attr="disabled"
                     wire:target="sendFinalAcceptanceLetterPoland"
                     class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-white bg-[#C49F5F] hover:bg-[#B8860B] rounded-md transition duration-150 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
                     title="Send Certificate (English + Polish)">
@@ -402,10 +414,10 @@
                             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
                         </path>
                     </svg>
-                    <span wire:loading.remove wire:target="sendFinalAcceptanceLetterPoland">Certificate (EN + TR)</span>
+                    <span wire:loading.remove wire:target="sendFinalAcceptanceLetterPoland">Certificate (EN +
+                        TR)</span>
                     <span wire:loading wire:target="sendFinalAcceptanceLetterPoland">Sending...</span>
                 </button>
-
             @endif
             <a href="{{ route('admin.applications.student.index') }}"
                 class="inline-flex items-center justify-center px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-100 hover:bg-indigo-200 rounded-md transition">
@@ -466,7 +478,14 @@
         <div class="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2">
             @forelse($documents as $document)
                 @php
-                    $url = $document['path'] ? Storage::url($document['path']) : null;
+                    // $url = $document['path'] ? Storage::url($document['path']) : null;
+                    $url = $document['path']
+                        ? route('admin.applications.student.documents', [
+                            'studentApplication' => $student->id,
+                            'type' => $document['type'],
+                        ])
+                        : null;
+
                     $type = $previewType($document['path']);
                 @endphp
 
